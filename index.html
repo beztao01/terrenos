@@ -1,738 +1,412 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landscape Quick Start — Unreal Engine 5</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-  html { font-size: 14px; }
-  @media (min-width: 576px)  { html { font-size: 15px; } }
-  @media (min-width: 768px)  { html { font-size: 16px; } }
-  @media (min-width: 1024px) { html { font-size: 17px; } }
-  @media (min-width: 1440px) { html { font-size: 18px; } }
-
-  :root {
-    --bg:      #0f1117;
-    --bg2:     #161b27;
-    --bg3:     #1e2538;
-    --bg4:     #252d42;
-    --border:  #2a3450;
-    --accent:  #4f8ef7;
-    --teal:    #2dd4bf;
-    --yellow:  #f59e0b;
-    --green:   #22c55e;
-    --red:     #ef4444;
-    --text:    #e2e8f0;
-    --muted:   #8896b0;
-  }
-
-  html { font-size: 18px; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
-
-  /* NAV */
-  .top-nav {
-    background: #0a0e1a;
-    border-bottom: 1px solid var(--border);
-    padding: 0 1.5rem;
-    height: 52px;
-    display: flex; align-items: center; gap: 10px;
-    position: sticky; top: 0; z-index: 1000;
-  }
-  .nav-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; color: #fff; }
-  .nav-logo-icon {
-    width: 28px; height: 28px; border-radius: 6px;
-    background: var(--accent); display: flex; align-items: center;
-    justify-content: center; font-weight: 900; font-size: 13px; color: #fff;
-  }
-  .nav-sep { color: #333; }
-  .nav-crumb { color: var(--muted); font-size: 12px; }
-  .nav-ver {
-    margin-left: auto; background: var(--bg3); border: 1px solid var(--border);
-    color: var(--teal); font-size: 11px; font-weight: 700;
-    padding: 2px 10px; border-radius: 20px;
-  }
-
-  /* SIDEBAR */
-  .sidebar {
-    background: var(--bg2);
-    border-right: 1px solid var(--border);
-    min-height: calc(100vh - 52px);
-    padding: 24px 0;
-    position: sticky; top: 52px;
-    height: calc(100vh - 52px);
-    overflow-y: auto;
-    align-self: flex-start;
-  }
-  .sidebar-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
-    text-transform: uppercase; color: var(--muted);
-    padding: 0 16px 6px;
-  }
-  .sidebar-link {
-    display: flex; align-items: center; gap: 8px;
-    padding: 8px 16px; color: var(--muted);
-    text-decoration: none; font-size: 13px;
-    border-left: 3px solid transparent;
-    transition: all .15s;
-  }
-  .sidebar-link:hover { color: var(--text); background: var(--bg3); }
-  .sidebar-link.active { color: var(--teal); border-left-color: var(--teal); background: rgba(45,212,191,.06); }
-  .s-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: .5; flex-shrink: 0; }
-  .sidebar::-webkit-scrollbar { width: 4px; }
-  .sidebar::-webkit-scrollbar-thumb { background: var(--border); }
-
-  /* MAIN */
-  .main-content {
-    flex: 1;
-    min-width: 0;
-    padding: clamp(16px, 4vw, 48px) clamp(14px, 5vw, 52px) 80px;
-  }
-  @media (max-width: 992px) {
-    .sidebar { display: none; }
-  }
-
-  /* BREADCRUMB */
-  .bc { font-size: 12px; color: var(--muted); margin-bottom: 24px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .bc a { color: var(--teal); text-decoration: none; }
-
-  /* PAGE HEADER */
-  .page-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 6px; }
-  .page-sub { color: var(--muted); font-size: clamp(0.85rem, 1.5vw, 1rem); margin-bottom: 0; }
-
-  /* DIVIDER */
-  hr.sec { border-color: var(--border); margin: 32px 0; }
-
-  /* SECTION */
-  .section { scroll-margin-top: 72px; margin-bottom: 52px; }
-  .sec-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-  .sec-num {
-    width: 30px; height: 30px; border-radius: 6px;
-    font-weight: 700; font-size: 13px; color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .c1 { background: var(--accent); }
-  .c2 { background: var(--green); }
-  .c3 { background: var(--yellow); }
-  .c4 { background: var(--teal); color: #0a0e1a !important; }
-  .c5 { background: #a855f7; }
-  h2.sec-title { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 700; color: #fff; margin: 0; }
-  h3.sub { font-size: clamp(0.85rem, 1.8vw, 1rem); font-weight: 600; color: var(--teal); margin: 22px 0 10px; }
-  p { color: var(--muted); font-size: clamp(0.82rem, 1.5vw, 0.95rem); line-height: 1.75; margin-bottom: 10px; }
-
-  /* CALLOUT */
-  .callout { border-radius: 6px; padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; border: 1px solid; }
-  .callout .ci { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
-  .callout .cb strong { font-size: 13px; color: var(--text); display: block; margin-bottom: 2px; }
-  .callout .cb p { margin: 0; font-size: 13px; }
-  .callout.info { background: rgba(79,142,247,.07); border-color: rgba(79,142,247,.25); }
-  .callout.info .ci { color: var(--accent); }
-  .callout.tip  { background: rgba(34,197,94,.07); border-color: rgba(34,197,94,.25); }
-  .callout.tip .ci  { color: var(--green); }
-  .callout.warn { background: rgba(245,158,11,.07); border-color: rgba(245,158,11,.25); }
-  .callout.warn .ci { color: var(--yellow); }
-
-  /* TABLE */
-  .tbl-wrap { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin: 14px 0; }
-  .tbl-wrap table { width: 100%; border-collapse: collapse; margin: 0; }
-  .tbl-wrap thead th {
-    background: var(--bg3); color: var(--muted);
-    font-size: 11px; font-weight: 600; letter-spacing: .7px;
-    text-transform: uppercase; padding: 9px 14px; text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .tbl-wrap tbody td { padding: 9px 14px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--border); }
-  .tbl-wrap tbody tr:last-child td { border-bottom: none; }
-  .tbl-wrap tbody tr:hover td { background: var(--bg3); }
-  td strong { color: var(--text); }
-
-  /* CODE */
-  code { font-family: 'Cascadia Code', 'Fira Code', monospace; background: var(--bg3); color: #7dd3fc; padding: 1px 6px; border-radius: 4px; font-size: 12px; border: 1px solid var(--border); }
-
-  /* BADGE */
-  .bdg { display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-  .bdg-blue { background: rgba(79,142,247,.15); color: #93c5fd; border: 1px solid rgba(79,142,247,.3); }
-  .bdg-green { background: rgba(34,197,94,.15); color: #86efac; border: 1px solid rgba(34,197,94,.3); }
-  .bdg-yellow { background: rgba(245,158,11,.15); color: #fcd34d; border: 1px solid rgba(245,158,11,.3); }
-  .bdg-purple { background: rgba(168,85,247,.15); color: #d8b4fe; border: 1px solid rgba(168,85,247,.3); }
-
-  /* STEPS */
-  .steps { list-style: none; padding: 0; }
-  .steps li {
-    display: flex; gap: 10px; align-items: flex-start;
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 6px; padding: 9px 13px; margin-bottom: 6px;
-    font-size: 13px; color: var(--muted);
-  }
-  .sn {
-    width: 20px; height: 20px; border-radius: 50%;
-    background: var(--bg4); border: 1px solid var(--border);
-    color: var(--teal); font-size: 10px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px;
-  }
-
-  /* TOOL CARDS */
-  .tool-card {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 8px; padding: 14px;
-    transition: border-color .2s, transform .15s;
-    height: 100%;
-  }
-  .tool-card:hover { border-color: var(--accent); transform: translateY(-1px); }
-  .tc-icon { font-size: 20px; margin-bottom: 8px; }
-  .tc-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .tc-desc { font-size: 12px; color: var(--muted); margin: 0; }
-  .tc-meta { font-size: 11px; color: #3d4f70; margin-top: 8px; font-family: monospace; }
-
-  /* SHORTCUT GRID */
-  .kb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  @media (max-width: 576px) { .kb-grid { grid-template-columns: 1fr; } }
-  .kb {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 6px; padding: 8px 12px;
-  }
-  .kb kbd {
-    font-family: monospace; font-size: 11px; font-weight: 700;
-    background: var(--bg4); color: var(--teal);
-    padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border);
-    white-space: nowrap; flex-shrink: 0;
-  }
-  .kb span { font-size: 12px; color: var(--muted); }
-
-  .img-block img {
-    width: 75%;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 20px rgba(0,0,0,.4);
-    display: block;
-    margin: 0 auto;
-  }
-  .img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
-  .img-row img { width: 100%; border-radius: 8px; border: 1px solid var(--border); }
-  @media (max-width: 576px) { 
-    .img-row { grid-template-columns: 1fr; }
-    .img-block img { width: 100%; }
-  }
-
-  /* PERF */
-  .good { color: var(--green) !important; }
-  .mid  { color: var(--yellow) !important; }
-  .bad  { color: var(--red) !important; }
-
-  /* FOOTER */
-  footer {
-    background: #0a0e1a; border-top: 1px solid var(--border);
-    padding: 20px 40px; margin-left: 220px;
-    display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap; gap: 10px;
-    font-size: 12px; color: var(--muted);
-  }
-  @media (max-width: 992px) { footer { margin-left: 0; } }
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { color: var(--teal); }
-
-  /* scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
+  <p>
+    Landscape Quick Start Guide
+Getting up and running with the basics of the Landscape System in Unreal Engine.
 
-<!-- NAV -->
-<div class="top-nav">
-  <div class="nav-logo">
-    <div class="nav-logo-icon">U</div>
-    Unreal Engine
-  </div>
-  <span class="nav-sep">/</span>
-  <span class="nav-crumb d-none d-sm-inline">Documentation</span>
-  <span class="nav-sep d-none d-sm-inline">/</span>
-  <span class="nav-crumb">Landscape System</span>
-  <span class="nav-ver">UE 5.7</span>
-</div>
-
-<div class="container-fluid p-0">
-  <div class="row g-0" style="align-items: flex-start;">
-
-
-    <div class="col-lg-2 d-none d-lg-block">
-      <div class="sidebar">
-        <div class="sidebar-label">Landscape</div>
-        <a class="sidebar-link active" href="#s1"><span class="s-dot"></span>Descripción General</a>
-        <a class="sidebar-link" href="#s2"><span class="s-dot"></span>Crear un Landscape</a>
-        <a class="sidebar-link" href="#s3"><span class="s-dot"></span>Sculpt Mode</a>
-        <a class="sidebar-link" href="#s4"><span class="s-dot"></span>Materiales y Paint</a>
-        <a class="sidebar-link" href="#s5"><span class="s-dot"></span>Foliage Tool</a>
-        <div style="height:12px"></div>
-        <div class="sidebar-label">Referencias</div>
-        <a class="sidebar-link" href="#"><span class="s-dot"></span>Landscape Materials</a>
-        <a class="sidebar-link" href="#"><span class="s-dot"></span>Technical Guide</a>
-        <a class="sidebar-link" href="#"><span class="s-dot"></span>Water Bodies</a>
-      </div>
-    </div>
-
-    <!-- MAIN -->
-    <div class="col-lg-10">
-      <div class="main-content">
-
-        <!-- Breadcrumb -->
-        <div class="bc">
-          <a href="#">Inicio</a><span>›</span>
-          <a href="#">World Building</a><span>›</span>
-          <a href="#">Landscape</a><span>›</span>
-          Quick Start Guide
-        </div>
-
-        <!-- Hero image -->
-        <div class="img-block mb-4">
-          <img src="Assets/1-1hero-image.png" alt="Landscape Hero">
-        </div>
-
-        <h1 class="page-title">Landscape Quick Start Guide</h1>
-        <p class="page-sub">Guía de inicio para crear, esculpir y pintar terrenos con el sistema Landscape de UE5.</p>
-        <hr class="sec">
-
-        <!-- ─── SECTION 1 ─── -->
-        <div class="section" id="s1">
-          <div class="sec-header">
-            <div class="sec-num c1">1</div>
-            <h2 class="sec-title">Herramientas y Modos de Landscape</h2>
-          </div>
-
-          <p>El sistema Landscape permite crear terrenos exteriores extensos optimizados para mantener un framerate estable en múltiples plataformas. Todas las herramientas están accesibles desde el menú <code>Modes → Landscape</code>.</p>
-
-          <div class="img-block">
-            <img src="Assets/1-2-landscape-tool-modes.png" alt="Modos de herramienta Landscape">
-            <div class="img-caption">Panel principal de la herramienta Landscape con los tres modos disponibles</div>
-          </div>
-
-          <h3 class="sub">Modos disponibles</h3>
-          <div class="tbl-wrap">
-            <table>
-              <thead><tr><th>Modo</th><th>Función</th><th>Cuándo usarlo</th></tr></thead>
-              <tbody>
-                <tr><td><span class="bdg bdg-blue">Manage</span></td><td>Crear y configurar el Landscape, modificar componentes</td><td>Inicio del proyecto y ajustes de escala global</td></tr>
-                <tr><td><span class="bdg bdg-green">Sculpt</span></td><td>Dar forma al terreno con pinceles de escultura</td><td>Crear montañas, valles y accidentes geográficos</td></tr>
-                <tr><td><span class="bdg bdg-yellow">Paint</span></td><td>Pintar capas de textura sobre el terreno</td><td>Aplicar grass, roca, tierra o nieve por zonas</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 class="sub">Atajos de teclado esenciales</h3>
-          <div class="kb-grid">
-            <div class="kb"><kbd>LMB</kbd><span>Elevar terreno / aplicar pincel</span></div>
-            <div class="kb"><kbd>Shift + LMB</kbd><span>Bajar terreno / borrar capa</span></div>
-            <div class="kb"><kbd>Ctrl + Z</kbd><span>Deshacer última acción</span></div>
-            <div class="kb"><kbd>Ctrl + Y</kbd><span>Rehacer acción</span></div>
-            <div class="kb"><kbd>[ / ]</kbd><span>Reducir / aumentar pincel</span></div>
-            <div class="kb"><kbd>Ctrl + Click</kbd><span>Seleccionar componente</span></div>
-          </div>
-
-          <div class="img-row mt-4">
-            <div>
-              <img src="Assets/1-3.jpg" alt="Vista de herramientas Landscape" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Vista general del editor con Landscape Mode activo</div>
-            </div>
-            <div>
-              <img src="Assets/1-4.jpg" alt="Interfaz del modo Landscape" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Panel lateral de herramientas en Sculpt Mode</div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="sec">
-
-        <!-- ─── SECTION 2 ─── -->
-        <div class="section" id="s2">
-          <div class="sec-header">
-            <div class="sec-num c2">2</div>
-            <h2 class="sec-title">Crear un Nuevo Landscape</h2>
-          </div>
-
-          <p>Antes de crear el terreno necesitas un proyecto con una plantilla base. La plantilla <strong>First Person</strong> es conveniente para explorar el Landscape a nivel del suelo durante el desarrollo.</p>
-
-          <div class="callout info">
-            <div class="ci">ℹ</div>
-            <div class="cb"><strong>Starter Content</strong><p>Asegúrate de incluir el Starter Content al crear el proyecto; lo usarás para los materiales de prueba iniciales.</p></div>
-          </div>
-
-          <h3 class="sub">Paso 1 — Crear el proyecto</h3>
-          <div class="img-row">
-            <div>
-              <img src="Assets/2-1-t-creating-a-new-fps-bp-project-1.png" alt="Nuevo proyecto FPS paso 1" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Selección de plantilla First Person</div>
-            </div>
-            <div>
-              <img src="Assets/2-2-t-creating-a-new-fps-bp-project-2.png" alt="Nuevo proyecto FPS paso 2" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Configuración y ubicación del proyecto</div>
-            </div>
-          </div>
-
-          <h3 class="sub">Paso 2 — Crear un nuevo nivel</h3>
-          <p>Una vez dentro del proyecto, crea un nivel limpio con <code>File → New Level → Empty Level</code> para partir desde cero sin actores extra.</p>
-
-          <div class="img-block">
-            <img src="Assets/2-3-t-creating-a-new-level.png" alt="Crear nuevo nivel">
-            <div class="img-caption">Menú File → New Level en el editor de UE5</div>
-          </div>
-
-          <h3 class="sub">Paso 3 — Preparar el nivel</h3>
-          <ul class="steps">
-            <li><span class="sn">1</span>Elimina el Floor predeterminado si lo hay: selecciónalo y presiona <kbd>Delete</kbd>.</li>
-            <li><span class="sn">2</span>Desplaza el <strong>Player Start</strong> ligeramente hacia arriba en el eje Z para que no quede enterrado bajo el terreno.</li>
-            <li><span class="sn">3</span>Guarda el nivel con <code>Ctrl + S</code> antes de continuar.</li>
-          </ul>
-
-          <div class="img-block">
-            <img src="Assets/2-4-t-blank-level.png" alt="Nivel vacío preparado">
-            <div class="img-caption">Nivel vacío listo para recibir el Landscape Actor</div>
-          </div>
-
-          <h3 class="sub">Paso 4 — Abrir Landscape Mode</h3>
-          <div class="img-block">
-            <img src="Assets/2-5-t-activating-landscape-mode.png" alt="Activar Landscape Mode">
-            <div class="img-caption">Activar el modo Landscape desde el menú Modes</div>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/2-6-t-landscape-tools.png" alt="Panel de herramientas Landscape">
-            <div class="img-caption">Panel de herramientas de Landscape en modo Manage</div>
-          </div>
-
-          <h3 class="sub">Paso 5 — Configurar y crear el Landscape</h3>
-          <div class="tbl-wrap">
-            <table>
-              <thead><tr><th>Tamaño (quads)</th><th>Componentes</th><th>Uso ideal</th><th>Rendimiento</th></tr></thead>
-              <tbody>
-                <tr><td><strong>505 × 505</strong></td><td>8×8</td><td>Prototipos, niveles pequeños</td><td class="good">● Excelente</td></tr>
-                <tr><td><strong>1009 × 1009</strong></td><td>16×16</td><td>Mapas medianos</td><td class="good">● Muy bueno</td></tr>
-                <tr><td><strong>2017 × 2017</strong></td><td>32×32</td><td>Open world compacto</td><td class="mid">● Aceptable</td></tr>
-                <tr><td><strong>8129 × 8129</strong></td><td>128×128</td><td>Open world grande</td><td class="bad">● Requiere optimización</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/2-7-t-fillworld-create-landscape.png" alt="Fill World y Create Landscape">
-            <div class="img-caption">Opción Fill World ajusta automáticamente el tamaño al nivel actual</div>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/2-8-t-creating-a-new-landscape.png" alt="Landscape creado">
-            <div class="img-caption">Landscape Actor generado en el viewport</div>
-          </div>
-
-          <div class="callout tip">
-            <div class="ci">✦</div>
-            <div class="cb"><strong>Importar un Heightmap</strong><p>En lugar de esculpir desde cero, puedes importar un archivo PNG o RAW de 16 bits desde herramientas como <strong>Gaea</strong> o <strong>World Machine</strong> usando la opción <em>Import from File</em> en el panel Manage.</p></div>
-          </div>
-        </div>
-
-        <hr class="sec">
-
-        <!-- ─── SECTION 3 ─── -->
-        <div class="section" id="s3">
-          <div class="sec-header">
-            <div class="sec-num c3">3</div>
-            <h2 class="sec-title">Esculpir el Landscape (Sculpt Mode)</h2>
-          </div>
-
-          <p>Activa el modo <span class="bdg bdg-green">Sculpt</span> para acceder a todas las herramientas de forma del terreno. Cada herramienta tiene parámetros de <strong>Brush Size</strong>, <strong>Brush Falloff</strong> y <strong>Tool Strength</strong>.</p>
-
-          <div class="img-block">
-            <img src="Assets/3-1.jpg" alt="Sculpt Mode activo">
-            <div class="img-caption">Vista del terreno con Sculpt Mode activo</div>
-          </div>
-
-          <h3 class="sub">Herramientas principales</h3>
-
-          <div class="row g-3 mb-3">
-            <div class="col-sm-6">
-              <div class="tool-card">
-                <div class="tc-icon">⛰</div>
-                <div class="tc-title">Sculpt</div>
-                <p class="tc-desc">Eleva o baja la altura del terreno. Herramienta principal para dar forma general.</p>
-                <div class="tc-meta">Size: 8192 | Strength: 0.3</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="tool-card">
-                <div class="tc-icon">〰️</div>
-                <div class="tc-title">Smooth</div>
-                <p class="tc-desc">Suaviza transiciones bruscas. Úsalo después de esculpir para naturalizar el terreno.</p>
-                <div class="tc-meta">Size: 2048 | Strength: 0.3</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="tool-card">
-                <div class="tc-icon">▬</div>
-                <div class="tc-title">Flatten</div>
-                <p class="tc-desc">Aplana zonas a una misma elevación. Ideal para plataformas, caminos y poblados.</p>
-                <div class="tc-meta">Size: 2048 | Strength: 0.5</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="tool-card">
-                <div class="tc-icon">📐</div>
-                <div class="tc-title">Ramp</div>
-                <p class="tc-desc">Genera una rampa suavizada entre dos puntos de distinta altura.</p>
-                <div class="tc-meta">Width: 2000 | Side Falloff: 0.4</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="tool-card">
-                <div class="tc-icon">🔷</div>
-                <div class="tc-title">Noise</div>
-                <p class="tc-desc">Añade variación orgánica aleatoria usando Perlin Noise configurable.</p>
-                <div class="tc-meta">Scale: 256 | Strength: 0.3</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="tool-card">
-                <div class="tc-icon">💧</div>
-                <div class="tc-title">Erosion (Thermal)</div>
-                <p class="tc-desc">Simula erosión por gravedad para crear bordes naturales en pendientes.</p>
-                <div class="tc-meta">Threshold: 0.15 | Time: 60</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/3-2-t-landscape-flat.png" alt="Landscape plano inicial" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Landscape plano antes de esculpir</div>
-            </div>
-            <div>
-              <img src="Assets/3-3-t-landscape-sculpt-tool.png" alt="Sculpt Tool en uso" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Sculpt Tool levantando terreno</div>
-            </div>
-          </div>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/3-4-t-landscape-smooth.png" alt="Smooth Tool" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Smooth Tool suavizando bordes</div>
-            </div>
-            <div>
-              <img src="Assets/3-5-t-landscape-flatten.png" alt="Flatten Tool" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Flatten Tool creando zonas planas</div>
-            </div>
-          </div>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/3-6-t-landscape-ramp.png" alt="Ramp Tool" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Ramp Tool generando rampas</div>
-            </div>
-            <div>
-              <img src="Assets/3-7-t-landscape-erosion.png" alt="Erosion Tool" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Erosion Tool (Thermal) aplicada</div>
-            </div>
-          </div>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/3-8-t-landscape-hydro-erosion.png" alt="Hydro Erosion" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Hydro Erosion simulando agua</div>
-            </div>
-            <div>
-              <img src="Assets/3-9-t-landscape-noise.png" alt="Noise Tool" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Noise Tool añadiendo variación orgánica</div>
-            </div>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/3-10-t-landscape-smooth-cleanup.png" alt="Smooth final cleanup">
-            <div class="img-caption">Smooth final para limpiar artefactos de erosión</div>
-          </div>
-
-          <div class="callout warn">
-            <div class="ci">⚠</div>
-            <div class="cb"><strong>Herramientas de Erosión</strong><p>Son costosas en terrenos grandes. Aplícalas en secciones pequeñas y usa <code>Ctrl + Z</code> si el resultado no es el esperado.</p></div>
-          </div>
-        </div>
-
-        <hr class="sec">
-
-        <!-- ─── SECTION 4 ─── -->
-        <div class="section" id="s4">
-          <div class="sec-header">
-            <div class="sec-num c4">4</div>
-            <h2 class="sec-title">Materiales de Landscape y Paint Mode</h2>
-          </div>
-
-          <p>Los Landscape Materials usan nodos exclusivos del Material Editor para gestionar múltiples capas de textura pintables sobre el terreno. El nodo central es <strong>LandscapeLayerBlend</strong>.</p>
-
-          <div class="img-block">
-            <img src="Assets/4-1-t-landscape-folders.png" alt="Estructura de carpetas">
-            <div class="img-caption">Estructura de carpetas recomendada: /Landscape/Materials, /Textures, /Levels</div>
-          </div>
-
-          <h3 class="sub">Crear el Material</h3>
-          <ul class="steps">
-            <li><span class="sn">1</span>En el Content Browser, crea un nuevo Material y ábrelo en el Material Editor.</li>
-            <li><span class="sn">2</span>Añade un nodo <code>LandscapeLayerBlend</code> y define las capas (ej. Grass, Rock, Dirt).</li>
-            <li><span class="sn">3</span>Para cada capa conecta sus texturas (Base Color, Normal, Roughness) a un nodo <code>MakeMaterialAttributes</code>.</li>
-            <li><span class="sn">4</span>Conecta el output del LayerBlend al nodo principal del material.</li>
-            <li><span class="sn">5</span>Asigna el material al Landscape Actor en el panel Details.</li>
-            <li><span class="sn">6</span>En Paint Mode, crea los archivos de capa haciendo clic en <strong>+</strong> junto a cada layer.</li>
-          </ul>
-
-          <div class="img-block">
-            <img src="Assets/4-2-t-landscape-create-new-material.png" alt="Crear material Landscape">
-            <div class="img-caption">Crear un nuevo material específico para Landscape</div>
-          </div>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/4-3-t-landscape-uv-cords.png" alt="UV Coordinates" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Nodo LandscapeLayerCoords para UVs correctas</div>
-            </div>
-            <div>
-              <img src="Assets/4-4-t-landscape-material-search.png" alt="Buscar nodos de material" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Búsqueda de nodos Landscape en el Material Editor</div>
-            </div>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/4-5-t-landscape-material-00.png" alt="Configuración del material">
-            <div class="img-caption">Configuración inicial del nodo LandscapeLayerBlend con capas definidas</div>
-          </div>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/4-6.jpg" alt="Material en progreso paso 1" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Conexión de texturas a MakeMaterialAttributes</div>
-            </div>
-            <div>
-              <img src="Assets/4-7.jpg" alt="Material en progreso paso 2" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Múltiples capas conectadas al LayerBlend</div>
-            </div>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/4-8.jpg" alt="Material completo">
-            <div class="img-caption">Material de Landscape completo antes de compilar</div>
-          </div>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/4-9-t-landscape-layer-blend-bc.png" alt="Layer Blend Base Color" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">LandscapeLayerBlend — Base Color</div>
-            </div>
-            <div>
-              <img src="Assets/4-11-t-landscape-layer-blend-n.png" alt="Layer Blend Normal" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">LandscapeLayerBlend — Normal Map</div>
-            </div>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/4-10.jpg" alt="Vista intermedia del material">
-            <div class="img-caption">Vista del material con capas de Normal y Roughness conectadas</div>
-          </div>
-
-          <div class="img-block">
-            <img src="Assets/4-12-t-landscape-material-final.png" alt="Material final compilado">
-            <div class="img-caption">Material final compilado y aplicado al Landscape Actor</div>
-          </div>
-
-          <h3 class="sub">Asignar el material y crear las capas de pintura</h3>
-
-          <div class="img-row">
-            <div>
-              <img src="Assets/5-1-t-landscape-materail-in-cb.png" alt="Material en Content Browser" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Material de Landscape en el Content Browser</div>
-            </div>
-            <div>
-              <img src="Assets/5-2-t-landscape-material-input.png" alt="Asignar material al Landscape" style="width:100%;border-radius:8px;border:1px solid var(--border);">
-              <div class="img-caption">Campo Landscape Material en el panel Details</div>
-            </div>
-          </div>
-
-          <div class="callout tip">
-            <div class="ci">✦</div>
-            <div class="cb"><strong>Material Instances para tiling</strong><p>Crea una <strong>Material Instance</strong> del material base y expón un parámetro de UV Scale. Así puedes ajustar el tiling de cada capa sin recompilar el shader.</p></div>
-          </div>
-
-          <h3 class="sub">Nodos clave del Material Editor</h3>
-          <div class="tbl-wrap">
-            <table>
-              <thead><tr><th>Nodo</th><th>Función</th></tr></thead>
-              <tbody>
-                <tr><td><strong>LandscapeLayerBlend</strong></td><td>Combina capas de material usando máscaras pintadas. Nodo principal del flujo.</td></tr>
-                <tr><td><strong>LandscapeLayerCoords</strong></td><td>Genera UVs adaptados a la escala del terreno, evitando stretching.</td></tr>
-                <tr><td><strong>LandscapeLayerSwitch</strong></td><td>Activa o desactiva una capa según si tiene pintura, optimizando el shader.</td></tr>
-                <tr><td><strong>LandscapeLayerWeight</strong></td><td>Expone el peso de una capa como float para lógica personalizada.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <hr class="sec">
-
-        <!-- ─── SECTION 5 ─── -->
-        <div class="section" id="s5">
-          <div class="sec-header">
-            <div class="sec-num c5">5</div>
-            <h2 class="sec-title">Foliage Tool</h2>
-          </div>
-
-          <p>La herramienta Foliage permite poblar el terreno con vegetación y objetos estáticos de forma masiva. Accede a ella desde <code>Modes → Foliage</code>.</p>
-
-          <h3 class="sub">Parámetros principales del Foliage Type</h3>
-          <div class="tbl-wrap">
-            <table>
-              <thead><tr><th>Parámetro</th><th>Función</th><th>Valor sugerido</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Density</strong></td><td>Instancias por m² al pintar</td><td>100–500 según tipo</td></tr>
-                <tr><td><strong>Scale Min / Max</strong></td><td>Rango de escala aleatoria</td><td>Min 0.8 / Max 1.2</td></tr>
-                <tr><td><strong>Random Yaw</strong></td><td>Rotación aleatoria en Y</td><td>Activado siempre</td></tr>
-                <tr><td><strong>Ground Slope Angle</strong></td><td>Ángulo máximo donde puede aparecer</td><td>0–35° para árboles</td></tr>
-                <tr><td><strong>Cull Distance</strong></td><td>Distancia a la que se deja de renderizar</td><td>5000–15000 UU</td></tr>
-                <tr><td><strong>Collision</strong></td><td>Tipo de colisión del objeto</td><td>None para hierba</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="callout info">
-            <div class="ci">ℹ</div>
-            <div class="cb"><strong>PCG Framework</strong><p>En UE 5.2+ puedes combinar Foliage con el <strong>Procedural Content Generation Framework</strong> para poblar el terreno automáticamente basándose en atributos como pendiente, altitud y capas de pintura.</p></div>
-          </div>
-
-          <div class="callout warn">
-            <div class="ci">⚠</div>
-            <div class="cb"><strong>Rendimiento</strong><p>El exceso de foliage es una de las causas más comunes de bajo framerate. Usa <strong>Cull Distance</strong> y evita Collision en objetos pequeños como hierba o flores.</p></div>
-          </div>
-        </div>
-
-        <hr class="sec">
-        <p class="text-center" style="font-size:12px;color:var(--muted);">Unreal Engine 5.7 · Landscape Quick Start Guide · Epic Games Documentation</p>
-
-  </div><!-- /main -->
-</div><!-- /container -->
-
-<footer>
-  <span>© Epic Games, Inc. — Guía de referencia para uso educativo</span>
-  <div class="d-flex gap-3">
-    <a href="#">Dev Community</a>
-    <a href="#">Foros UE</a>
-    <a href="#">Fab Marketplace</a>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const sections = document.querySelectorAll('.section');
-  const links = document.querySelectorAll('.sec-nav a');
-  window.addEventListener('scroll', () => {
-    let cur = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
-    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
-  }, { passive: true });
-</script>
+Landscape Quick Start Guide
+The Unreal Editor Landscape Quick Start Guide walks you through creating a new Landscape, sculpting the Landscape, creating new Materials for the Landscape, and painting those Materials on the Landscape.
+
+1 - Working with the Landscape Tools
+The Landscape system inside of Unreal Engine 5 (UE5) is a collection of tools that allow you to create expansive outdoor environments. But before we dive into creating our first Landscape, let us first familiarize ourselves with some of the tools and keyboard inputs that are most commonly used to interact with the Landscape system.
+
+Opening the Landscape Tool and Working with Modes
+All of the tools that are used to interact with the Landscape system can be found under the Landscape option that is located in the Modes dropdown menu. To enable the Landscape tools, open the Modes dropdown and choose the option from the menu.
+
+The Landscape tool has three modes, Manage, Sculpt, and Paint that are accessible by clicking on their icons at the top of the Landscape's toolbar window. Each mode will allow you to interact with the Landscape in a different manner. Here is a very quick rundown of what each mode allow you to do.
+
+Landscape Tool Modes
+Icon	Mode	Description
+Manage mode	Manage mode	Create new Landscapes, and modify Landscape components. Manage mode is also where you work with Landscape Copy Tool to copy, paste, import, and export parts of your Landscape. For more information about Manage mode, refer to Landscape Manage Mode.
+Sculpt mode	Sculpt mode	Modify the shape of your Landscape by selecting and using specific tools. For more information about Sculpt mode, refer to Landscape Sculpt Mode.
+Paint mode	Paint mode	Modify the appearance of parts of your Landscape by painting textures on it, based on the layers defined in the Landscape's Material. For more information about Paint mode, refer to Landscape Paint Mode.
+Interacting with the Landscape Tools
+While each of the three modes within the Landscape tools allows you to interact with the Landscape differently, but the keyboard and mouse keys that you use are similar. Here is a rundown of some of the most common keys, key combinations, and mouse buttons that are used when working with the Landscape tool.
+
+Common Controls	Operation
+Ctrl	Allows you to select Landscape components.
+Left Mouse Button	Heightens or increases the heightmap or selected layer's weight. For example, in Sculpting mode, this will raise the Landscape heighmap. In Paint mode this will apply the selected material to the Landscape.
+Shift + Left Mouse Button	Lowers or decreases the heightmap or selected layer's weight. For example, in Sculpting mode, this will lower the Landscape heightmap. In Paint mode, this will erase the selected material that was applied to a particular section of the Landscape.
+Ctrl + Z	Undoes last action.
+Ctrl + Y	Redoes last undone action.
+2 - Creating a new Landscape
+Creating a New FPS Blueprint Project
+Before we begin to create our first Landscape, lets create a new project First Person Project.
+
+If you are unfamiliar with how to create a new project, check out the following page on Creating a New Project.
+
+Creating a Landscape
+First, create a new First Person project if you have not done so already. While you can use other templates for this tutorial, the First Person will make it a little easier to inspect your Landscape. After choosing the First Person option, click the Next button.
+
+Creating a new project-1
+Click image for full size.
+
+Make sure your project is set up to use Blueprints and contains the Starter Content folder. Choose a location where your project will be stored on your computer and make sure it has a proper name. Finally, click the Create Project button to continue.
+
+Creating a new project-2
+Click image for full size.
+
+Once you have created your new project and the editor has been loaded, create a new level using File > New Level and select the Default Level from the New Level Template.
+
+Creating a new level
+Click image for full size.
+
+With your new level now created, select the Floor from the level and press the Delete key to remove it from the level.
+
+Make sure that you select your player start and move it up slightly in the Z-axis. This will make sure that your player does not start under your newly created Landscape.
+
+Once completed, you should now have something that looks similar to the following image.
+
+Blank level
+Click image for full size.
+
+With the level cleared out and the player start moved up in the Z-axis slightly, it is now time to create a new Landscape. To create a new Landscape, click on the Landscape option in the Modes dropdown menu.
+
+Activating landscape mode
+Click image for full size.
+
+Once you have clicked on the Landscape option, you should see the following set of Landscape tools displayed in the Landscape panel.
+
+Landscape tools
+Click image for full size.
+
+For this tutorial, we will just focus on creating a Landscape using the default settings. If you would like to know more about the various settings in the Manage mode of the Landscape tool, please refer to Creating Landscapes. For now, make sure that your settings match the image below and then press the Create button to create the Landscape.
+
+Fillworld create landscape
+Click image for full size.
+
+When done, you should have something that looks like this.
+
+Creating a new landscape
+Click image for full size.
+
+3 - Sculpting the Landscape
+Sculpting the Landscape is a time consuming process. All of the tools used for sculpting can be found under the Sculpt tab in the Landscape toolbar. If you would like to know more about what each of the Sculpting Tools does in detail, take a look at the Sculpt Mode page. For quick reference, here is a list of the most common key and mouse interactions that are used when sculpting the Landscape.
+
+Common Controls	Operation
+Ctrl	Allows you to select Landscape components.
+Left Mouse Button	Heightens or increases the heightmap or selected layer's weight. For example, in Sculpting mode, this will raise the Landscape heighmap. In Paint mode, this will apply the selected material to the Landscape.
+Shift + Left Mouse Button	Lowers or decreases the heightmap or selected layer's weight. For example, in Sculpting mode, this will lower the Landscape heightmap. In Paint mode, this will erase the selected material that was applied to a particular section of the Landscape.
+Ctrl + Z	Undoes last action.
+Ctrl + Y	Redoes last undone action.
+For this part of the Landscape tutorial, we are going to start with a completely flat section of the Landscape and then build up the details as we go along. The goal here is not to exactly mimic what was created in the tutorial but to get you familiar and comfortable with using the various Landscape tools.
+
+There could be a lot of various reasons as to why what you do in this tutorial does not come out exactly the same as what you see in the following screen shots. Working with the Landscape tools requires a lot of trial and error so your results will vary, sometimes greatly, from what you are seeing in the following set of images. The most important thing to get out of this tutorial is to understand how each of the Landscape tools work and how all the tools work together to give you the final product.
+
+To begin, first find a section of the Landscape that you would like to work with. For this tutorial, we are not going to be filling in the entire Landscape but just a section of it. For ease of use, set a camera bookmark by pressing Ctrl + 1 on the keyboard. This will set a camera bookmark which will make it easier for you to gauge how your Landscape is coming along by giving you a camera view to always come back to. At any time during your editor session, if you press the 1 Key, your camera will be returned to the exact same position that you set.
+
+Landscape flat
+Click image for full size.
+
+With the bookmark set, begin painting in the larger details for hills and valleys using the Sculpt Tool. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following. You can change the value of the Brush Size and Strength either in the Landscape panel or the Landscape toolbar located just above the viewport.
+
+Remember that you use Left Mouse Button to raise the Landscape height and Shift + Left Mouse Button will lower the height of the Landscape.
+
+Tool Used	Brush Size	Strength Setting
+Scupt Tool	8192	0.29
+Landscape sculpt tool
+Click image for full size.
+
+Once the the hills and valleys are blocked out, it is time to use the Smooth Tool to help refine the look and feel of them. Using this tool will smooth your Landscape features and make them seem more natural. Be careful not to smooth away all your features! You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+
+Tool Used	Brush Size	Strength Setting
+Smooth Tool	2048	0.29
+Landscape smooth
+Click image for full size.
+
+Now that the Landscape is smoothed out, it is time to add some flat mesa like sections using the Flatten Tool. The Flatten Tool captures the height information of the location of your first click and raises/lowers the heightmap to meet that point as you drag around the brush. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+
+Tool Used	Brush Size	Strength Setting
+Flatten Tool	2048	0.29
+Landscape flatten
+Click image for full size.
+
+It is time to use the Ramp Tool to add some flat ramps between the mesas. This tool works by designating a start point and an end point for your ramp and then clicking the Add Ramp button to create a flat path between the two points. Each point can be moved any direction to create a ramp that fits each unique situation. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following. If it is not very clear where the Ramp was used, it has been highlighted in yellow.
+
+Tool Used	Ramp Width	Side Falloff
+Ramp Tool	2000	0.40
+Landscape ramp
+Click image for full size.
+
+Next, we are going to add some erosion effects to the Landscape to give it a weathered look using the Erosion Tool which works by simulating erosion done by wind. This tool is perfect for shaving away parts of your hills to create mountain peaks and ridges. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+
+Tool Used	Brush Size	Strength Setting
+Erosion Tool	693	0.25
+Landscape erosion
+Click image for full size.
+
+In the next step, we will take the erosion that was just added in the previous step and push it further by adding some Hydro Erosion to the Landscape. The Hydro Erosion Tool is different than the Erosion Tool as it is for simulating how water will erode Landscape details over time. Like the Smooth Tool, be careful not to erode away all your detail. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+
+Tool Used	Brush Size	Strength Setting
+Hydro Erosion	2048	0.29
+Landscape hydro erosion
+Click image for full size.
+
+To break up the surface of the Landscape even more, we will use the Noise Tool. The Noise Tool adds random noise to the surface of the Landscape by randomly moving the Landscape vertices up or down or both at the same time. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+
+Tool Used	Brush Size	Strength Setting
+Noise Tool	2048	0.29
+Landscape noise
+Click image for full size.
+
+For the final step in the Landscape sculpting part of the tutorial, we will re-use the Smooth Tool to help smooth out some of the more jagged areas of the Landscape to give it a more natural look. While you might not need to do this step yourself, this was done to help even out some of the areas that appear too deep or areas that the player might get stuck in if they fall into. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+
+Tool Used	Brush Size	Strength Setting
+Smooth Tool	1121	0.16
+Landscape smooth cleanup
+Click image for full size.
+
+4 - Creating Landscape Materials
+Folder Setup
+We have finished sculpting the Landscape, it is time to add some Materials to it so that it better resembles something that we see in the real world. But before you do this, you need to first setup some folders to organize the content that you create and migrate into your project.
+
+If you would like to know more about how to setup folders in Unreal Engine 5, please refer to the following page about Folders.
+
+Start by creating a new folder called Landscape in your project's Content folder.
+Then inside the Landscape folder, create the following three folders:
+Materials
+Resources
+Textures
+When completed, you should have something that looks like the following.
+
+Landscape folders
+Click image for full size.
+
+Migrating Textures
+Now that we have the folders in place, it is time to Migrate some Textures from the Landscape Mountains learning project so that we have some Textures to work with. This project can be found under the Learn tab in the Epic Games Launcher. If you would like to know more about how to Migrate content from one project to another one, please check out the following page on how to Migrate Content.
+
+When Migrating content between projects, you could possibly end up with additional folders that you do not want. To fix this, select the Textures that you want inside of the Content Browser and then drag them from their current location into the folder that you want them to be placed in. This is purely a house keeping step and will have no impact on the outcome of the tutorial.
+
+You can find the textures located in the following folder located in the Landscapes Content example project.
+
+/Game/ExampleContent/Landscapes/Textures/
+
+The Textures that you will be Migrating over from the Landscape Content Example project are as follows.
+
+T_LS_Grass_01_D
+T_LS_Grass_01_N
+T_FullGrass_D
+T_FullGrass_N
+T_IceNoise_N
+Once you have the textures migrated over, make sure they are placed in the Textures folder that was created in the steps above.
+
+Creating the Landscape Material
+Creating a Material for our Landscape can be done in the following steps.
+
+Navigate to the Materials folder in the Content Broswer.
+Right-click in the Content Browser and select Material from the Create Basic Asset list.
+Name the newly created Material something that will allow you to easily find it, like Landscape_Material for example.
+If you have not already done so, please check out the Materials pages to gain a more in-depth understanding of how materials work inside of Unreal Engine 5.
+
+When this is complete, you will have something that looks like this:
+
+Landscape create new material
+Click image for full size.
+
+With our new Landscape Material created, open up the Material by Double-clicking on it inside of the Content Browser. When you do, you should see something like this come up on the screen:
+
+Landscape blank material
+Click image for full size.
+
+It is time to start adding nodes inside of the Material Editor. The first node that you are going to want to create is a LandscapeLayerCoords UV node. This node will help to generate UV coordinates that will be used to map the Landscape Material to the Landscape Actor.
+
+Landscape uv cords
+Click image for full size.
+
+The quickest way to find nodes specific to Landscape is to search for them in the Materials Palette box using Landscape as the key word.
+
+Landscape material search
+Click image for full size.
+
+The next Material nodes that we are going to add are going to be for the textures for the ground's Base Color and Normal maps. For the snow, we are just going to use a Vector Parameter (V + Left-click) that uses an off White color. To make sure that no Metallic information is used, a Constant (1 + Left-click) of 0 is used and plugged into the Metallic input. Finally, for the Roughness, we set a Scalar Parameter (S + Left-click) so that this value can be tweaked via a Material Instance. Finally, make sure that you connect the LandscapeCoords to the UV's of each of the Texture Samples. When completed, your node network should look like this:
+
+Landscape material
+Click image for full size.
+
+To add the Texture Sample nodes for the various textures, select the desired texture in the Content Browser and then press T + Left-click in the Material Editor's graph to create the node.
+
+To find more information about these keybindings, take a look at the Edit > Editor Preferences > Keyboard Shortcuts window and select the Material Editor - Spawn Nodes section.
+
+Number	Texture Name
+1	T_LS_Grass_01_D
+2	T_FullGrass_D
+3	T_LS_Grass_01_N
+4	T_FullGrass_N
+5	T_IceNoise_N
+After the Material nodes have been added and the LandscapeCoords connected to the textures UVs, it is time to add and setup the Landscape Layer Blend node. The Landscape Layer Blend node allows for the blending of layers via Weight blending, Height blending, or Alpha blending. Weight blending uses each layer's painted weight to determine which to display. We use Weight blending where we want two surfaces to blend seamlessly into each other, such as rock into sand. Height blending uses the same weight information along with an additional height value taken from the Texture Sample's Alpha channel and is best used when one material needs to clearly sit on top of another, such as the Grass and Snow sitting on top of the Soil layer. Finally, Alpha blending uses the painted weight information with an Alpha layer to determine the final result.
+
+The following table shows what Textures are associated with which Layer Name and what Blend Type they use.
+
+When you first place down a Landscape Layer Blend node, it will be blank like in the image below labeled one. To add Layers, you need to select the node in the Material Graph and then in the Details panel, click on the Plus icon that is in-between the word Elements and the Trash Can icon. This icon is highlighted yellow in the image labeled two. How many textures you are using will determine how many Layers you will want to have.
+
+Landscape node Landscape adding layers to node
+
+Layer Blend Base Color
+
+Texture	Layer Name	Blend Type	Preview Weight
+T_LS_Grass_01_D	Soil	LB Weight Blend	1.0
+T_FullGrass_D	Grass	LB Height Blend	0.0
+Snow as a Vector 3	Snow	LB Height Blend	0.0
+Landscape layer blend
+Click image for full size.
+
+Layer Blend Normal
+
+Texture	Layer Name	Blend Type	Preview Weight
+T_LS_Grass_01_N	Soil	LB Weight Blend	1.0
+T_FullGrass_N	Grass	LB Height Blend	0.0
+T_IceNoise_N	Snow	LB Weight Blend	0.0
+Landscape layer blend N
+Click image for full size.
+
+For more in-depth information about using the Landscape Layer Blend node or to troubleshoot any issues, please read the Terrain Expressions page.
+
+Once the Layer Blend nodes have been set up, it is time to connect the Texture maps to them. Height blended materials will have both a Layer connection and a Height connection to accommodate the need for the additional height information. When completed, you should have something that looks like the following.
+
+Landscape material final
+Click image for full size.
+
+The material connections were colored in Photoshop to help better illustrate where everything needed to be connected. Currently there is no way to change the color of lines connecting Material nodes inside of Unreal Engine 5.
+
+5 - Painting Landscape Materials
+With the Landscape material created, it is time to apply the Material to the Landscape and begin using the Paint tools.
+
+Landscape Painting Prep
+Before we can begin painting the Landscape, there is some setup that needs to be done first. Start by applying your Landscape Material to the Landscape:
+
+Find your Material in the Content Browser. This should be located under a folder labeled Materials that was created in the previous section. Click on it so that it is selected.
+
+Landscape materail in cb
+Click image for full size.
+
+With the Landscape Material selected in the Content Browser, select the Landscape in the world. Then in the Details panel, expand the Landscape section and look for the Landscape Material input.
+
+Landscape materail input
+Click image for full size.
+
+Apply the Material to the Landscape using the Use Selected Asset from the Content Browser arrow icon. You can also drag the Material asset from the Content Browser to the Details panel and drop it on the Landscape Material input.
+
+Landscape assign material
+Click image for full size.
+
+When completed, you should have something that looks like this:
+
+Landscape with material applied
+Click image for full size.
+
+If you see black lines in your Landscape, they come from having Un-Built lighting. If you re-build your level's lighting, the black lines will go away.
+
+Now that the Landscape Material is applied, it is almost time to stat painting but before we can do that, we must first create and assign three Landscape Layer Info Objects. If you try to paint before you assign the Landscape Layer Info Objects, you will get the following warning message.
+
+Landscape paint warning
+Click image for full size.
+
+You need to create three Landscape Layer Info Objects, one for each Texture that you want to paint. Here is how you do it:
+
+First, make sure that you are in Landscape Paint mode.
+
+undefined
+Click image for full size.
+
+In the Landscape panel, under the Target Layers section, you should see three inputs labeled Soil, Grass, and Snow.
+
+undefined
+Click image for full size.
+
+To the right of the names, there is a Plus Sign icon. Clicking that will bring up another menu that will ask what type of layer you would like to add. For this example, pick the Weight-Blended Layer (normal) option.
+
+Landscape blend layer
+Click image for full size.
+
+When you select the Weight-Blended Layer (normal) option, you will be prompted with a pop-up box that is asking you where you want to save the newly created Landscape Layer Info Objects. Select the Resources folder that is under the Landscape folder and then press the OK button.
+
+Landscape layer info save
+Click image for full size.
+
+Once you have completed the first one, repeat the same process for the other two. You should have something that looks like the following:
+
+Landscape finshed layers
+Click image for full size.
+
+Now with the Landscape Layer Info Objects created and applied, we can begin to paint our Landscape.
+
+Painting the Landscape
+Before you begin to paint the Landscape, here is a re-cap of some of the most used commonly used keyboard and mouse inputs that you will use when painting the Landscape.
+
+Common Controls	Operation
+Left Mouse Button	Performs a stroke that applies the selected tool's effects to the selected layer.
+Ctrl+Z	Undo last stroke.
+Ctrl+Y	Redo last undone stroke.
+The main tool that you will use for applying textures to your Landscape is going to be the Paint Tool. To find out more about all of the tools that you can use to paint on the Landscape, check out the Paint Mode documentation.
+
+To apply a Material to the Landscape, press and hold the Left Mouse Button to apply whatever you have selected to the area under the brush.
+
+To select a new texture to paint, make sure you are in Landscape Painting Mode then under the Target Layers section, select which texture you want to paint with by clicking on it in the list. Whichever texture is highlighted will be painted on the Landscape. In the image below, you can see the Soil layer is highlighted meaning that this is the texture that will be painted to the Landscape.
+
+Landscape picking layers to paint
+Click image for full size.
+
+When you finish painting, you should have something that looks like this.
+
+Landscape final paint
+Click image for full size.
+
+Possible Issues and Workarounds
+When you first start painting on your Landscape you might run into an issue where the base Material disappears or turns black, like in the following picture:
+
+First paint issues
+Click image for full size.
+
+This happens when there is no Paint Layer data on the Landscape when you first start to paint. To fix this issue, continue to paint over the Landscape generating the Paint Layer data as you go. If you would like to fill in the entire Landscape, first select a large brush size, like 8192.0, pick a layer that you want to use as a base and paint over the entire Landscape once. This will create Paint Layer data and allow you to continue to paint without anything turning black.
+
+Another issue that you might run into is that the scale of the Textures on your Landscape are either too big or too small. To fix this, open your Landscape Material and select the Landscape Coords node. With that node selected, adjust the Mapping Scale in the Details panel and save the Material. Once the Material is re-compiled, check the scale out in the viewport. If the scale is not to your liking, then repeat the processes above until you get the results you want.
+
+Landscape texture size
+Click image for full size.
+
+Here is a comparison between a Mapping Scale of 0.5 on the Left and 5.0 on the Right.
+
+Mapping Scale: 0.5
+Mapping Scale: 5.0
+
+Mapping Scale: 0.5Mapping Scale: 5.0
+6 - Landscape Tips and Tricks
+While the quick start tutorial above will get you up and running with a Landscape, it barely scratches the surface of what the Landscape tools can do. This section aims to show you some tips and tricks for using the Landscape Tool as well as some external tools that you can use to generate your Landscape.
+
+Tips & Tricks
+When using the Paint Tools, you might find it easier to paint over what you would like to erase than to try and erase it using Shift + Left Mouse Button.
+When using the Alpha Brush, remember that you can change what the pattern that the brush uses by selecting a different RGB channels from the Texture Channel drop down menu. This is very handy because you can pack up to three different Alpha patterns in a single texture.
+
+Landscape tips tricks
+Click image for full size.
+
+Landscape compiles shaders separately for each component based on which layers are painted on them. For example, if you have a component with a dirt layer on it but no trace of the grass layer has been painted on it, the textures for the grass layer are left out of the material for that component, making it cheaper to render. So when you do an optimization pass, it can be worthwhile to go over a Landscape and look for components that only have a tiny trace of a given layer and erase them to reduce material complexity.
+Another issue to watch out for when painting layers is to avoid having too many textures on one component. The material editor stats show the limit of how many texture samples you are allowed to use, but for Landscape materials the masks for each layer count as texture samples too and do not show in the stats. If a component starts showing the default texture (Grey Squares) when you paint a new layer onto it, it is likely that it is gone over the texture sample limit and either needs to have a layer erased or the material needs to be optimized to use less textures.
+You can change the LOD Distance Factor for individual Landscape components so they will simplify at closer or further distance thresholds. Things like mountain peaks or anything with a distinct silhouette will LOD most noticeably as you move further away, so you can reduce the LOD bias for those components to preserve their shape. You can also raise the LOD bias for low-detail areas like flat plains that will not look noticeably different with less tessellation.
+World Composition
+Unreal Engine 5 (UE5) now offers the ability to create massive worlds made using Landscape that can easily be managed by using the World Composition tool. World Composition was designed to help simplify the management of large worlds, especially if those worlds are made using the Landscape system. To find out more about the World Composition tool, please refer to the official document that you can find here:
+
+World Composition Documents
+
+External Creation Tools
+While the default Landscape tools do have the ability to meet all of your sculpting and painting needs, there could be some situations where you might want some extra control over your Landscape's look and feel. The following is a list of software packages that could help you obtain the results you are looking for if you cannot get them from using the Landscape tools.
+
+ 	 
+Houdini	Procedural terrain generation in Houdini uses a collection of heightfield nodes to let you use layer shapes and add noise to define the look of your digital landscapes. Use advanced erosion tools for more control over details such as fluvial lines, river banks, debris, and new hierarchical scattering for more efficient placement of elements into landscapes. You can then export height and/or mask layers to create terrain in UE5, or you can wrap up your terrain networks into Houdini Digital Assets that will open up in UE5 using the Houdini Engine plug-in. When Digital Assets include heightfield nodes, they will integrate seamlessly with Unreal Engine's native Terrain tools.
+Mudbox	While primarily a tool for digital sculpting and painting 3D meshes, Mudbox can also be used to generate heightmap data for your Landscape. You can read more about how Mudbox might be able to help you out with your Landscape by checking out their website.
+Terragen	Terragen is another powerful fully procedural terrain creation software. Much like World Machine, it can be used to build, texture, and export both heightmaps and textures for your Landscape. You can read more about how Terragen might be able to help you out with your Landscape by checking out their website.
+World Machine	World Machine is a powerful procedural terrain creation software. It can be used to build, texture, and export both heightmaps and textures for your Landscape. You can read more about how World Machine might be able to help you out with your Landscape by checking out their website.
+ZBrush	Zbrush is another digital sculpting and painting tool that can be used to generate heightmap data for your Landscape. You can read more about how Zbrush might be able to help you out with your Landscape by checking out their website.
+landscape
+building virtual worlds
+open world
+
+  </p>
 </body>
 </html>
