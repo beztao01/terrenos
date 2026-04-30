@@ -1,411 +1,414 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Documento</title>
 </head>
 <body>
   <p>
-    Landscape Quick Start Guide
-Getting up and running with the basics of the Landscape System in Unreal Engine.
 
-Landscape Quick Start Guide
-The Unreal Editor Landscape Quick Start Guide walks you through creating a new Landscape, sculpting the Landscape, creating new Materials for the Landscape, and painting those Materials on the Landscape.
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
-1 - Working with the Landscape Tools
-The Landscape system inside of Unreal Engine 5 (UE5) is a collection of tools that allow you to create expansive outdoor environments. But before we dive into creating our first Landscape, let us first familiarize ourselves with some of the tools and keyboard inputs that are most commonly used to interact with the Landscape system.
+Guía de inicio rápido de Landscape
+Cómo empezar con los conceptos básicos del sistema Landscape en Unreal Engine.
 
-Opening the Landscape Tool and Working with Modes
-All of the tools that are used to interact with the Landscape system can be found under the Landscape option that is located in the Modes dropdown menu. To enable the Landscape tools, open the Modes dropdown and choose the option from the menu.
+Guía de inicio rápido de Landscape
+La guía de inicio rápido de Landscape del Editor de Unreal te acompaña en la creación de un nuevo Landscape, esculpir el Landscape, crear nuevos Materiales para el Landscape y pintar esos Materiales en el Landscape.
 
-The Landscape tool has three modes, Manage, Sculpt, and Paint that are accessible by clicking on their icons at the top of the Landscape's toolbar window. Each mode will allow you to interact with the Landscape in a different manner. Here is a very quick rundown of what each mode allow you to do.
+1 - Trabajando con las herramientas de Landscape
+El sistema Landscape dentro de Unreal Engine 5 (UE5) es un conjunto de herramientas que te permiten crear entornos exteriores expansivos. Pero antes de sumergirnos en la creación de nuestro primer Landscape, familiaricémonos primero con algunas de las herramientas y entradas de teclado que se usan más comúnmente para interactuar con el sistema Landscape.
 
-Landscape Tool Modes
-Icon	Mode	Description
-Manage mode	Manage mode	Create new Landscapes, and modify Landscape components. Manage mode is also where you work with Landscape Copy Tool to copy, paste, import, and export parts of your Landscape. For more information about Manage mode, refer to Landscape Manage Mode.
-Sculpt mode	Sculpt mode	Modify the shape of your Landscape by selecting and using specific tools. For more information about Sculpt mode, refer to Landscape Sculpt Mode.
-Paint mode	Paint mode	Modify the appearance of parts of your Landscape by painting textures on it, based on the layers defined in the Landscape's Material. For more information about Paint mode, refer to Landscape Paint Mode.
-Interacting with the Landscape Tools
-While each of the three modes within the Landscape tools allows you to interact with the Landscape differently, but the keyboard and mouse keys that you use are similar. Here is a rundown of some of the most common keys, key combinations, and mouse buttons that are used when working with the Landscape tool.
+Abrir la herramienta Landscape y trabajar con modos
+Todas las herramientas que se utilizan para interactuar con el sistema Landscape se pueden encontrar en la opción Landscape que se encuentra en el menú desplegable Modes. Para habilitar las herramientas de Landscape, abre el menú desplegable Modes y elige la opción del menú.
 
-Common Controls	Operation
-Ctrl	Allows you to select Landscape components.
-Left Mouse Button	Heightens or increases the heightmap or selected layer's weight. For example, in Sculpting mode, this will raise the Landscape heighmap. In Paint mode this will apply the selected material to the Landscape.
-Shift + Left Mouse Button	Lowers or decreases the heightmap or selected layer's weight. For example, in Sculpting mode, this will lower the Landscape heightmap. In Paint mode, this will erase the selected material that was applied to a particular section of the Landscape.
-Ctrl + Z	Undoes last action.
-Ctrl + Y	Redoes last undone action.
-2 - Creating a new Landscape
-Creating a New FPS Blueprint Project
-Before we begin to create our first Landscape, lets create a new project First Person Project.
+La herramienta Landscape tiene tres modos: Manage, Sculpt y Paint, a los que se puede acceder haciendo clic en sus íconos en la parte superior de la ventana de la barra de herramientas de Landscape. Cada modo te permitirá interactuar con el Landscape de una manera diferente. Aquí hay una descripción muy rápida de lo que permite hacer cada modo.
 
-If you are unfamiliar with how to create a new project, check out the following page on Creating a New Project.
+Modos de la herramienta Landscape
+Ícono	Modo	Descripción
+Modo Manage	Modo Manage	Crea nuevos Landscapes y modifica componentes del Landscape. El modo Manage también es donde trabajas con la herramienta Landscape Copy Tool para copiar, pegar, importar y exportar partes de tu Landscape. Para obtener más información sobre el modo Manage, consulta Modo Manage de Landscape.
+Modo Sculpt	Modo Sculpt	Modifica la forma de tu Landscape seleccionando y usando herramientas específicas. Para obtener más información sobre el modo Sculpt, consulta Modo Sculpt de Landscape.
+Modo Paint	Modo Paint	Modifica la apariencia de partes de tu Landscape pintando texturas sobre él, basándose en las capas definidas en el Material del Landscape. Para obtener más información sobre el modo Paint, consulta Modo Paint de Landscape.
+Interactuando con las herramientas de Landscape
+Si bien cada uno de los tres modos dentro de las herramientas de Landscape te permite interactuar con el Landscape de manera diferente, las teclas del teclado y del ratón que utilizas son similares. Aquí hay una descripción de algunas de las teclas, combinaciones de teclas y botones del ratón más comunes que se usan cuando se trabaja con la herramienta Landscape.
 
-Creating a Landscape
-First, create a new First Person project if you have not done so already. While you can use other templates for this tutorial, the First Person will make it a little easier to inspect your Landscape. After choosing the First Person option, click the Next button.
+Controles comunes	Operación
+Ctrl	Te permite seleccionar componentes del Landscape.
+Botón izquierdo del ratón	Eleva o aumenta el mapa de altura o el peso de la capa seleccionada. Por ejemplo, en el modo Sculpting, esto elevará el mapa de altura del Landscape. En el modo Paint, esto aplicará el material seleccionado al Landscape.
+Shift + Botón izquierdo del ratón	Baja o disminuye el mapa de altura o el peso de la capa seleccionada. Por ejemplo, en el modo Sculpting, esto bajará el mapa de altura del Landscape. En el modo Paint, esto borrará el material seleccionado que se aplicó a una sección particular del Landscape.
+Ctrl + Z	Deshace la última acción.
+Ctrl + Y	Rehace la última acción deshecha.
+2 - Creando un nuevo Landscape
+Creando un nuevo proyecto de blueprint FPS
+Antes de comenzar a crear nuestro primer Landscape, creemos un nuevo proyecto First Person Project.
 
-Creating a new project-1
-Click image for full size.
+Si no estás familiarizado con cómo crear un nuevo proyecto, consulta la siguiente página sobre Cómo crear un nuevo proyecto.
 
-Make sure your project is set up to use Blueprints and contains the Starter Content folder. Choose a location where your project will be stored on your computer and make sure it has a proper name. Finally, click the Create Project button to continue.
+Creando un Landscape
+Primero, crea un nuevo proyecto First Person si aún no lo has hecho. Si bien puedes usar otras plantillas para este tutorial, First Person hará que sea un poco más fácil inspeccionar tu Landscape. Después de elegir la opción First Person, haz clic en el botón Next.
 
-Creating a new project-2
-Click image for full size.
+Crear un nuevo proyecto-1
+Haz clic en la imagen para verla a tamaño completo.
 
-Once you have created your new project and the editor has been loaded, create a new level using File > New Level and select the Default Level from the New Level Template.
+Asegúrate de que tu proyecto esté configurado para usar Blueprints y contenga la carpeta Starter Content. Elige una ubicación donde se almacenará tu proyecto en tu computadora y asegúrate de que tenga el nombre adecuado. Finalmente, haz clic en el botón Create Project para continuar.
 
-Creating a new level
-Click image for full size.
+Crear un nuevo proyecto-2
+Haz clic en la imagen para verla a tamaño completo.
 
-With your new level now created, select the Floor from the level and press the Delete key to remove it from the level.
+Una vez que hayas creado tu nuevo proyecto y se haya cargado el editor, crea un nuevo nivel usando File > New Level y selecciona Default Level de la plantilla New Level Template.
 
-Make sure that you select your player start and move it up slightly in the Z-axis. This will make sure that your player does not start under your newly created Landscape.
+Crear un nuevo nivel
+Haz clic en la imagen para verla a tamaño completo.
 
-Once completed, you should now have something that looks similar to the following image.
+Con tu nuevo nivel creado, selecciona el Floor del nivel y presiona la tecla Delete para eliminarlo del nivel.
 
-Blank level
-Click image for full size.
+Asegúrate de seleccionar el inicio de tu jugador y moverlo ligeramente hacia arriba en el eje Z. Esto asegurará que tu jugador no comience debajo de tu Landscape recién creado.
 
-With the level cleared out and the player start moved up in the Z-axis slightly, it is now time to create a new Landscape. To create a new Landscape, click on the Landscape option in the Modes dropdown menu.
+Una vez completado, ahora deberías tener algo que se parezca a la siguiente imagen.
 
-Activating landscape mode
-Click image for full size.
+Nivel vacío
+Haz clic en la imagen para verla a tamaño completo.
 
-Once you have clicked on the Landscape option, you should see the following set of Landscape tools displayed in the Landscape panel.
+Con el nivel despejado y el inicio del jugador movido ligeramente hacia arriba en el eje Z, es hora de crear un nuevo Landscape. Para crear un nuevo Landscape, haz clic en la opción Landscape en el menú desplegable Modes.
 
-Landscape tools
-Click image for full size.
+Activar el modo landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-For this tutorial, we will just focus on creating a Landscape using the default settings. If you would like to know more about the various settings in the Manage mode of the Landscape tool, please refer to Creating Landscapes. For now, make sure that your settings match the image below and then press the Create button to create the Landscape.
+Una vez que hayas hecho clic en la opción Landscape, deberías ver el siguiente conjunto de herramientas de Landscape que se muestran en el panel Landscape.
 
-Fillworld create landscape
-Click image for full size.
+Herramientas de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-When done, you should have something that looks like this.
+Para este tutorial, nos centraremos solo en crear un Landscape usando la configuración predeterminada. Si deseas obtener más información sobre las diversas configuraciones en el modo Manage de la herramienta Landscape, consulta Creando Landscapes. Por ahora, asegúrate de que tu configuración coincida con la imagen a continuación y luego presiona el botón Create para crear el Landscape.
 
-Creating a new landscape
-Click image for full size.
+Fillworld crear landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-3 - Sculpting the Landscape
-Sculpting the Landscape is a time consuming process. All of the tools used for sculpting can be found under the Sculpt tab in the Landscape toolbar. If you would like to know more about what each of the Sculpting Tools does in detail, take a look at the Sculpt Mode page. For quick reference, here is a list of the most common key and mouse interactions that are used when sculpting the Landscape.
+Cuando termines, deberías tener algo que se vea así.
 
-Common Controls	Operation
-Ctrl	Allows you to select Landscape components.
-Left Mouse Button	Heightens or increases the heightmap or selected layer's weight. For example, in Sculpting mode, this will raise the Landscape heighmap. In Paint mode, this will apply the selected material to the Landscape.
-Shift + Left Mouse Button	Lowers or decreases the heightmap or selected layer's weight. For example, in Sculpting mode, this will lower the Landscape heightmap. In Paint mode, this will erase the selected material that was applied to a particular section of the Landscape.
-Ctrl + Z	Undoes last action.
-Ctrl + Y	Redoes last undone action.
-For this part of the Landscape tutorial, we are going to start with a completely flat section of the Landscape and then build up the details as we go along. The goal here is not to exactly mimic what was created in the tutorial but to get you familiar and comfortable with using the various Landscape tools.
+Creando un nuevo landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-There could be a lot of various reasons as to why what you do in this tutorial does not come out exactly the same as what you see in the following screen shots. Working with the Landscape tools requires a lot of trial and error so your results will vary, sometimes greatly, from what you are seeing in the following set of images. The most important thing to get out of this tutorial is to understand how each of the Landscape tools work and how all the tools work together to give you the final product.
+3 - Esculpir el Landscape
+Esculpir el Landscape es un proceso que lleva tiempo. Todas las herramientas utilizadas para esculpir se pueden encontrar en la pestaña Sculpt en la barra de herramientas de Landscape. Si deseas obtener más información sobre lo que hace cada una de las herramientas de Sculpting en detalle, echa un vistazo a la página Modo Sculpt. Como referencia rápida, aquí hay una lista de las interacciones de teclado y ratón más comunes que se utilizan al esculpir el Landscape.
 
-To begin, first find a section of the Landscape that you would like to work with. For this tutorial, we are not going to be filling in the entire Landscape but just a section of it. For ease of use, set a camera bookmark by pressing Ctrl + 1 on the keyboard. This will set a camera bookmark which will make it easier for you to gauge how your Landscape is coming along by giving you a camera view to always come back to. At any time during your editor session, if you press the 1 Key, your camera will be returned to the exact same position that you set.
+Controles comunes	Operación
+Ctrl	Te permite seleccionar componentes del Landscape.
+Botón izquierdo del ratón	Eleva o aumenta el mapa de altura o el peso de la capa seleccionada. Por ejemplo, en el modo Sculpting, esto elevará el mapa de altura del Landscape. En el modo Paint, esto aplicará el material seleccionado al Landscape.
+Shift + Botón izquierdo del ratón	Baja o disminuye el mapa de altura o el peso de la capa seleccionada. Por ejemplo, en el modo Sculpting, esto bajará el mapa de altura del Landscape. En el modo Paint, esto borrará el material seleccionado que se aplicó a una sección particular del Landscape.
+Ctrl + Z	Deshace la última acción.
+Ctrl + Y	Rehace la última acción deshecha.
+Para esta parte del tutorial de Landscape, vamos a comenzar con una sección completamente plana del Landscape y luego construiremos los detalles a medida que avanzamos. El objetivo aquí no es imitar exactamente lo que se creó en el tutorial, sino familiarizarte y sentirte cómodo usando las diversas herramientas de Landscape.
 
-Landscape flat
-Click image for full size.
+Puede haber muchas razones diversas por las que lo que haces en este tutorial no sale exactamente igual a lo que ves en las siguientes capturas de pantalla. Trabajar con las herramientas de Landscape requiere mucha prueba y error, por lo que tus resultados variarán, a veces mucho, de lo que ves en el siguiente conjunto de imágenes. Lo más importante que debes obtener de este tutorial es comprender cómo funciona cada una de las herramientas de Landscape y cómo funcionan todas las herramientas juntas para brindarte el producto final.
 
-With the bookmark set, begin painting in the larger details for hills and valleys using the Sculpt Tool. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following. You can change the value of the Brush Size and Strength either in the Landscape panel or the Landscape toolbar located just above the viewport.
+Para comenzar, primero encuentra una sección del Landscape con la que te gustaría trabajar. Para este tutorial, no vamos a llenar todo el Landscape, sino solo una sección de él. Para facilitar su uso, establece un marcador de cámara presionando Ctrl + 1 en el teclado. Esto establecerá un marcador de cámara que te facilitará evaluar cómo está progresando tu Landscape al brindarte una vista de cámara a la que siempre puedes regresar. En cualquier momento durante tu sesión de edición, si presionas la tecla 1, tu cámara volverá a la misma posición que configuraste.
 
-Remember that you use Left Mouse Button to raise the Landscape height and Shift + Left Mouse Button will lower the height of the Landscape.
+Landscape plano
+Haz clic en la imagen para verla a tamaño completo.
 
-Tool Used	Brush Size	Strength Setting
-Scupt Tool	8192	0.29
-Landscape sculpt tool
-Click image for full size.
+Con el marcador establecido, comienza a pintar los detalles más grandes para colinas y valles usando la herramienta Sculpt Tool. Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente. Puedes cambiar el valor del Brush Size y Strength ya sea en el panel Landscape o en la barra de herramientas de Landscape ubicada justo encima de la ventana gráfica.
 
-Once the the hills and valleys are blocked out, it is time to use the Smooth Tool to help refine the look and feel of them. Using this tool will smooth your Landscape features and make them seem more natural. Be careful not to smooth away all your features! You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+Recuerda que usas el Botón izquierdo del ratón para elevar la altura del Landscape y Shift + Botón izquierdo del ratón para bajar la altura del Landscape.
 
-Tool Used	Brush Size	Strength Setting
+Herramienta utilizada	Tamaño de pincel	Configuración de fuerza
+Sculpt Tool	8192	0.29
+Herramienta de escultura de landscape
+Haz clic en la imagen para verla a tamaño completo.
+
+Una vez que las colinas y valles estén bloqueados, es hora de usar la herramienta Smooth Tool para ayudar a refinar su apariencia. El uso de esta herramienta suavizará las características de tu Landscape y hará que parezcan más naturales. ¡Ten cuidado de no suavizar todas tus características! Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente.
+
+Herramienta utilizada	Tamaño de pincel	Configuración de fuerza
 Smooth Tool	2048	0.29
-Landscape smooth
-Click image for full size.
+Suavizado de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Now that the Landscape is smoothed out, it is time to add some flat mesa like sections using the Flatten Tool. The Flatten Tool captures the height information of the location of your first click and raises/lowers the heightmap to meet that point as you drag around the brush. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+Ahora que el Landscape está suavizado, es hora de agregar algunas secciones planas tipo mesa usando la herramienta Flatten Tool. La herramienta Flatten Tool captura la información de altura de la ubicación de tu primer clic y eleva/baja el mapa de altura para alcanzar ese punto mientras arrastras el pincel. Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente.
 
-Tool Used	Brush Size	Strength Setting
+Herramienta utilizada	Tamaño de pincel	Configuración de fuerza
 Flatten Tool	2048	0.29
-Landscape flatten
-Click image for full size.
+Aplanamiento de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-It is time to use the Ramp Tool to add some flat ramps between the mesas. This tool works by designating a start point and an end point for your ramp and then clicking the Add Ramp button to create a flat path between the two points. Each point can be moved any direction to create a ramp that fits each unique situation. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following. If it is not very clear where the Ramp was used, it has been highlighted in yellow.
+Es hora de usar la herramienta Ramp Tool para agregar algunas rampas planas entre las mesas. Esta herramienta funciona designando un punto de inicio y un punto final para tu rampa y luego haciendo clic en el botón Add Ramp para crear un camino plano entre los dos puntos. Cada punto se puede mover en cualquier dirección para crear una rampa que se adapte a cada situación única. Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente. Si no está muy claro dónde se usó la Ramp, se ha resaltado en amarillo.
 
-Tool Used	Ramp Width	Side Falloff
+Herramienta utilizada	Ancho de rampa	Caída lateral
 Ramp Tool	2000	0.40
-Landscape ramp
-Click image for full size.
+Rampa de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Next, we are going to add some erosion effects to the Landscape to give it a weathered look using the Erosion Tool which works by simulating erosion done by wind. This tool is perfect for shaving away parts of your hills to create mountain peaks and ridges. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+A continuación, agregaremos algunos efectos de erosión al Landscape para darle un aspecto desgastado usando la herramienta Erosion Tool que funciona simulando la erosión causada por el viento. Esta herramienta es perfecta para desgastar partes de tus colinas para crear picos y crestas montañosas. Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente.
 
-Tool Used	Brush Size	Strength Setting
+Herramienta utilizada	Tamaño de pincel	Configuración de fuerza
 Erosion Tool	693	0.25
-Landscape erosion
-Click image for full size.
+Erosión de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-In the next step, we will take the erosion that was just added in the previous step and push it further by adding some Hydro Erosion to the Landscape. The Hydro Erosion Tool is different than the Erosion Tool as it is for simulating how water will erode Landscape details over time. Like the Smooth Tool, be careful not to erode away all your detail. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+En el siguiente paso, tomaremos la erosión que se acaba de agregar en el paso anterior y la impulsaremos aún más agregando algo de Hydro Erosion al Landscape. La herramienta Hydro Erosion Tool es diferente de la herramienta Erosion Tool, ya que sirve para simular cómo el agua erosionará los detalles del Landscape con el tiempo. Al igual que la herramienta Smooth Tool, ten cuidado de no erosionar todos tus detalles. Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente.
 
-Tool Used	Brush Size	Strength Setting
+Herramienta utilizada	Tamaño de pincel	Configuración de fuerza
 Hydro Erosion	2048	0.29
-Landscape hydro erosion
-Click image for full size.
+Hidroerosión de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-To break up the surface of the Landscape even more, we will use the Noise Tool. The Noise Tool adds random noise to the surface of the Landscape by randomly moving the Landscape vertices up or down or both at the same time. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+Para romper aún más la superficie del Landscape, usaremos la herramienta Noise Tool. La herramienta Noise Tool agrega ruido aleatorio a la superficie del Landscape moviendo aleatoriamente los vértices del Landscape hacia arriba o hacia abajo, o ambos al mismo tiempo. Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente.
 
-Tool Used	Brush Size	Strength Setting
+Herramienta utilizada	Tamaño de pincel	Configuración de fuerza
 Noise Tool	2048	0.29
-Landscape noise
-Click image for full size.
+Ruido de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-For the final step in the Landscape sculpting part of the tutorial, we will re-use the Smooth Tool to help smooth out some of the more jagged areas of the Landscape to give it a more natural look. While you might not need to do this step yourself, this was done to help even out some of the areas that appear too deep or areas that the player might get stuck in if they fall into. You can find the brush size and strength settings that were used for this step listed below and when completed, you should have something that looks like the following.
+Para el paso final en la parte de esculpido del Landscape del tutorial, reutilizaremos la herramienta Smooth Tool para ayudar a suavizar algunas de las áreas más dentadas del Landscape y darle un aspecto más natural. Si bien es posible que no necesites hacer este paso tú mismo, esto se hizo para ayudar a igualar algunas de las áreas que parecen demasiado profundas o áreas en las que el jugador podría quedarse atascado si se cae. Puedes encontrar la configuración de tamaño de pincel y fuerza que se utilizó para este paso a continuación y, cuando se complete, deberías tener algo que se vea como lo siguiente.
 
-Tool Used	Brush Size	Strength Setting
+Herramienta utilizada	Tamaño de pincel	Configuración de fuerza
 Smooth Tool	1121	0.16
-Landscape smooth cleanup
-Click image for full size.
+Limpieza suave del landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-4 - Creating Landscape Materials
-Folder Setup
-We have finished sculpting the Landscape, it is time to add some Materials to it so that it better resembles something that we see in the real world. But before you do this, you need to first setup some folders to organize the content that you create and migrate into your project.
+4 - Creando Materiales para Landscape
+Configuración de carpetas
+Hemos terminado de esculpir el Landscape, es hora de agregar algunos Materiales para que se parezca más a algo que vemos en el mundo real. Pero antes de hacer esto, primero debes configurar algunas carpetas para organizar el contenido que creas y migras a tu proyecto.
 
-If you would like to know more about how to setup folders in Unreal Engine 5, please refer to the following page about Folders.
+Si deseas obtener más información sobre cómo configurar carpetas en Unreal Engine 5, consulta la siguiente página sobre Carpetas.
 
-Start by creating a new folder called Landscape in your project's Content folder.
-Then inside the Landscape folder, create the following three folders:
+Comienza creando una nueva carpeta llamada Landscape en la carpeta Content de tu proyecto.
+Luego, dentro de la carpeta Landscape, crea las siguientes tres carpetas:
 Materials
 Resources
 Textures
-When completed, you should have something that looks like the following.
+Cuando se complete, deberías tener algo que se vea como lo siguiente.
 
-Landscape folders
-Click image for full size.
+Carpetas de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Migrating Textures
-Now that we have the folders in place, it is time to Migrate some Textures from the Landscape Mountains learning project so that we have some Textures to work with. This project can be found under the Learn tab in the Epic Games Launcher. If you would like to know more about how to Migrate content from one project to another one, please check out the following page on how to Migrate Content.
+Migrando Texturas
+Ahora que tenemos las carpetas en su lugar, es hora de Migrar algunas Texturas del proyecto de aprendizaje Landscape Mountains para tener algunas Texturas con las que trabajar. Este proyecto se puede encontrar en la pestaña Learn en el Epic Games Launcher. Si deseas obtener más información sobre cómo Migrar contenido de un proyecto a otro, consulta la siguiente página sobre cómo Migrar Contenido.
 
-When Migrating content between projects, you could possibly end up with additional folders that you do not want. To fix this, select the Textures that you want inside of the Content Browser and then drag them from their current location into the folder that you want them to be placed in. This is purely a house keeping step and will have no impact on the outcome of the tutorial.
+Al Migrar contenido entre proyectos, es posible que termines con carpetas adicionales que no deseas. Para solucionar esto, selecciona las Texturas que deseas dentro del Content Browser y luego arrástralas desde su ubicación actual a la carpeta en la que deseas que se coloquen. Este es puramente un paso de limpieza y no tendrá impacto en el resultado del tutorial.
 
-You can find the textures located in the following folder located in the Landscapes Content example project.
+Puedes encontrar las texturas ubicadas en la siguiente carpeta en el proyecto de ejemplo Landscapes Content.
 
 /Game/ExampleContent/Landscapes/Textures/
 
-The Textures that you will be Migrating over from the Landscape Content Example project are as follows.
+Las Texturas que migrarás del proyecto Landscape Content Example son las siguientes.
 
 T_LS_Grass_01_D
 T_LS_Grass_01_N
 T_FullGrass_D
 T_FullGrass_N
 T_IceNoise_N
-Once you have the textures migrated over, make sure they are placed in the Textures folder that was created in the steps above.
+Una vez que hayas migrado las texturas, asegúrate de colocarlas en la carpeta Textures que se creó en los pasos anteriores.
 
-Creating the Landscape Material
-Creating a Material for our Landscape can be done in the following steps.
+Creando el Material de Landscape
+La creación de un Material para nuestro Landscape se puede realizar en los siguientes pasos.
 
-Navigate to the Materials folder in the Content Broswer.
-Right-click in the Content Browser and select Material from the Create Basic Asset list.
-Name the newly created Material something that will allow you to easily find it, like Landscape_Material for example.
-If you have not already done so, please check out the Materials pages to gain a more in-depth understanding of how materials work inside of Unreal Engine 5.
+Navega a la carpeta Materials en el Content Browser.
+Haz clic derecho en el Content Browser y selecciona Material de la lista Create Basic Asset.
+Nombra el Material recién creado con algo que te permita encontrarlo fácilmente, como Landscape_Material, por ejemplo.
+Si aún no lo has hecho, consulta las páginas de Materials para obtener una comprensión más profunda de cómo funcionan los materiales dentro de Unreal Engine 5.
 
-When this is complete, you will have something that looks like this:
+Cuando esto esté completo, tendrás algo que se ve así:
 
-Landscape create new material
-Click image for full size.
+Landscape crear nuevo material
+Haz clic en la imagen para verla a tamaño completo.
 
-With our new Landscape Material created, open up the Material by Double-clicking on it inside of the Content Browser. When you do, you should see something like this come up on the screen:
+Con nuestro nuevo Material de Landscape creado, ábrelo haciendo doble clic en él dentro del Content Browser. Cuando lo hagas, deberías ver algo como esto en la pantalla:
 
-Landscape blank material
-Click image for full size.
+Material de landscape en blanco
+Haz clic en la imagen para verla a tamaño completo.
 
-It is time to start adding nodes inside of the Material Editor. The first node that you are going to want to create is a LandscapeLayerCoords UV node. This node will help to generate UV coordinates that will be used to map the Landscape Material to the Landscape Actor.
+Es hora de comenzar a agregar nodos dentro del Material Editor. El primer nodo que vas a querer crear es un nodo UV LandscapeLayerCoords. Este nodo ayudará a generar coordenadas UV que se utilizarán para mapear el Material de Landscape al Actor de Landscape.
 
-Landscape uv cords
-Click image for full size.
+Coordenadas UV de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-The quickest way to find nodes specific to Landscape is to search for them in the Materials Palette box using Landscape as the key word.
+La forma más rápida de encontrar nodos específicos de Landscape es buscarlos en el cuadro Materials Palette usando Landscape como palabra clave.
 
-Landscape material search
-Click image for full size.
+Búsqueda de material de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-The next Material nodes that we are going to add are going to be for the textures for the ground's Base Color and Normal maps. For the snow, we are just going to use a Vector Parameter (V + Left-click) that uses an off White color. To make sure that no Metallic information is used, a Constant (1 + Left-click) of 0 is used and plugged into the Metallic input. Finally, for the Roughness, we set a Scalar Parameter (S + Left-click) so that this value can be tweaked via a Material Instance. Finally, make sure that you connect the LandscapeCoords to the UV's of each of the Texture Samples. When completed, your node network should look like this:
+Los siguientes nodos de Material que agregaremos serán para las texturas de los mapas de Color Base y Normal del suelo. Para la nieve, usaremos un Vector Parameter (V + clic izquierdo) que utiliza un color blanco apagado. Para asegurarnos de que no se use información Metálica, se usa una Constant (1 + clic izquierdo) de 0 y se conecta a la entrada Metallic. Finalmente, para la Rugosidad, configuramos un Scalar Parameter (S + clic izquierdo) para que este valor se pueda ajustar a través de una Instancia de Material. Finalmente, asegúrate de conectar LandscapeCoords a las UV de cada una de las Texture Samples. Cuando se complete, tu red de nodos debería verse así:
 
-Landscape material
-Click image for full size.
+Material de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-To add the Texture Sample nodes for the various textures, select the desired texture in the Content Browser and then press T + Left-click in the Material Editor's graph to create the node.
+Para agregar los nodos Texture Sample para las diversas texturas, selecciona la textura deseada en el Content Browser y luego presiona T + clic izquierdo en el gráfico del Material Editor para crear el nodo.
 
-To find more information about these keybindings, take a look at the Edit > Editor Preferences > Keyboard Shortcuts window and select the Material Editor - Spawn Nodes section.
+Para encontrar más información sobre estas combinaciones de teclas, echa un vistazo a la ventana Edit > Editor Preferences > Keyboard Shortcuts y selecciona la sección Material Editor - Spawn Nodes.
 
-Number	Texture Name
+Número	Nombre de la textura
 1	T_LS_Grass_01_D
 2	T_FullGrass_D
 3	T_LS_Grass_01_N
 4	T_FullGrass_N
 5	T_IceNoise_N
-After the Material nodes have been added and the LandscapeCoords connected to the textures UVs, it is time to add and setup the Landscape Layer Blend node. The Landscape Layer Blend node allows for the blending of layers via Weight blending, Height blending, or Alpha blending. Weight blending uses each layer's painted weight to determine which to display. We use Weight blending where we want two surfaces to blend seamlessly into each other, such as rock into sand. Height blending uses the same weight information along with an additional height value taken from the Texture Sample's Alpha channel and is best used when one material needs to clearly sit on top of another, such as the Grass and Snow sitting on top of the Soil layer. Finally, Alpha blending uses the painted weight information with an Alpha layer to determine the final result.
+Después de que se hayan agregado los nodos de Material y se haya conectado LandscapeCoords a las UV de las texturas, es hora de agregar y configurar el nodo Landscape Layer Blend. El nodo Landscape Layer Blend permite la mezcla de capas a través de Weight blending, Height blending o Alpha blending. El Weight blending utiliza el peso pintado de cada capa para determinar cuál mostrar. Usamos Weight blending donde queremos que dos superficies se mezclen perfectamente entre sí, como roca en arena. El Height blending utiliza la misma información de peso junto con un valor de altura adicional tomado del canal Alpha de la Texture Sample y es mejor usarlo cuando un material necesita estar claramente sobre otro, como la Hierba y la Nieve sobre la capa de Suelo. Finalmente, el Alpha blending utiliza la información de peso pintada con una capa Alfa para determinar el resultado final.
 
-The following table shows what Textures are associated with which Layer Name and what Blend Type they use.
+La siguiente tabla muestra qué Texturas están asociadas con cada Nombre de Capa y qué Tipo de Mezcla utilizan.
 
-When you first place down a Landscape Layer Blend node, it will be blank like in the image below labeled one. To add Layers, you need to select the node in the Material Graph and then in the Details panel, click on the Plus icon that is in-between the word Elements and the Trash Can icon. This icon is highlighted yellow in the image labeled two. How many textures you are using will determine how many Layers you will want to have.
+Cuando colocas un nodo Landscape Layer Blend por primera vez, estará en blanco como en la imagen a continuación etiquetada como uno. Para agregar Capas, debes seleccionar el nodo en el Material Graph y luego, en el panel Details, hacer clic en el ícono Más que está entre la palabra Elements y el ícono de la Papelera. Este ícono está resaltado en amarillo en la imagen etiquetada como dos. La cantidad de texturas que estés utilizando determinará cuántas Capas querrás tener.
 
-Landscape node Landscape adding layers to node
+Nodo landscape Agregando capas al nodo
 
-Layer Blend Base Color
+Mezcla de capas de Color Base
 
-Texture	Layer Name	Blend Type	Preview Weight
+Textura	Nombre de la Capa	Tipo de Mezcla	Peso de Vista Previa
 T_LS_Grass_01_D	Soil	LB Weight Blend	1.0
 T_FullGrass_D	Grass	LB Height Blend	0.0
-Snow as a Vector 3	Snow	LB Height Blend	0.0
-Landscape layer blend
-Click image for full size.
+Snow como Vector 3	Snow	LB Height Blend	0.0
+Mezcla de capas de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Layer Blend Normal
+Mezcla de capas Normal
 
-Texture	Layer Name	Blend Type	Preview Weight
+Textura	Nombre de la Capa	Tipo de Mezcla	Peso de Vista Previa
 T_LS_Grass_01_N	Soil	LB Weight Blend	1.0
 T_FullGrass_N	Grass	LB Height Blend	0.0
 T_IceNoise_N	Snow	LB Weight Blend	0.0
-Landscape layer blend N
-Click image for full size.
+Mezcla de capas de landscape N
+Haz clic en la imagen para verla a tamaño completo.
 
-For more in-depth information about using the Landscape Layer Blend node or to troubleshoot any issues, please read the Terrain Expressions page.
+Para obtener información más detallada sobre el uso del nodo Landscape Layer Blend o para solucionar cualquier problema, lee la página Terrain Expressions.
 
-Once the Layer Blend nodes have been set up, it is time to connect the Texture maps to them. Height blended materials will have both a Layer connection and a Height connection to accommodate the need for the additional height information. When completed, you should have something that looks like the following.
+Una vez que se hayan configurado los nodos Layer Blend, es hora de conectar los mapas de textura a ellos. Los materiales mezclados por altura tendrán tanto una conexión de Capa como una conexión de Altura para acomodar la necesidad de información de altura adicional. Cuando se complete, deberías tener algo que se vea como lo siguiente.
 
-Landscape material final
-Click image for full size.
+Material de landscape final
+Haz clic en la imagen para verla a tamaño completo.
 
-The material connections were colored in Photoshop to help better illustrate where everything needed to be connected. Currently there is no way to change the color of lines connecting Material nodes inside of Unreal Engine 5.
+Las conexiones de materiales se colorearon en Photoshop para ayudar a ilustrar mejor dónde se necesitaba conectar todo. Actualmente no hay forma de cambiar el color de las líneas que conectan los nodos de Material dentro de Unreal Engine 5.
 
-5 - Painting Landscape Materials
-With the Landscape material created, it is time to apply the Material to the Landscape and begin using the Paint tools.
+5 - Pintando Materiales de Landscape
+Con el material de Landscape creado, es hora de aplicar el Material al Landscape y comenzar a usar las herramientas de Paint.
 
-Landscape Painting Prep
-Before we can begin painting the Landscape, there is some setup that needs to be done first. Start by applying your Landscape Material to the Landscape:
+Preparación para pintar el Landscape
+Antes de que podamos comenzar a pintar el Landscape, primero se debe realizar alguna configuración. Comienza aplicando tu Material de Landscape al Landscape:
 
-Find your Material in the Content Browser. This should be located under a folder labeled Materials that was created in the previous section. Click on it so that it is selected.
+Encuentra tu Material en el Content Browser. Esto debería estar ubicado en una carpeta llamada Materials que se creó en la sección anterior. Haz clic en él para que esté seleccionado.
 
-Landscape materail in cb
-Click image for full size.
+Material de landscape en cb
+Haz clic en la imagen para verla a tamaño completo.
 
-With the Landscape Material selected in the Content Browser, select the Landscape in the world. Then in the Details panel, expand the Landscape section and look for the Landscape Material input.
+Con el Material de Landscape seleccionado en el Content Browser, selecciona el Landscape en el mundo. Luego, en el panel Details, expande la sección Landscape y busca la entrada Landscape Material.
 
-Landscape materail input
-Click image for full size.
+Entrada de material de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Apply the Material to the Landscape using the Use Selected Asset from the Content Browser arrow icon. You can also drag the Material asset from the Content Browser to the Details panel and drop it on the Landscape Material input.
+Aplica el Material al Landscape usando el ícono de flecha Use Selected Asset del Content Browser. También puedes arrastrar el recurso Material desde el Content Browser al panel Details y soltarlo en la entrada Landscape Material.
 
-Landscape assign material
-Click image for full size.
+Asignar material de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-When completed, you should have something that looks like this:
+Cuando se complete, deberías tener algo que se vea así:
 
-Landscape with material applied
-Click image for full size.
+Landscape con material aplicado
+Haz clic en la imagen para verla a tamaño completo.
 
-If you see black lines in your Landscape, they come from having Un-Built lighting. If you re-build your level's lighting, the black lines will go away.
+Si ves líneas negras en tu Landscape, provienen de tener iluminación no construida. Si reconstruyes la iluminación de tu nivel, las líneas negras desaparecerán.
 
-Now that the Landscape Material is applied, it is almost time to stat painting but before we can do that, we must first create and assign three Landscape Layer Info Objects. If you try to paint before you assign the Landscape Layer Info Objects, you will get the following warning message.
+Ahora que se aplicó el Material de Landscape, ya casi es hora de comenzar a pintar, pero antes de que podamos hacer eso, primero debemos crear y asignar tres Landscape Layer Info Objects. Si intentas pintar antes de asignar los Landscape Layer Info Objects, recibirás el siguiente mensaje de advertencia.
 
-Landscape paint warning
-Click image for full size.
+Advertencia de pintura de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-You need to create three Landscape Layer Info Objects, one for each Texture that you want to paint. Here is how you do it:
+Debes crear tres Landscape Layer Info Objects, uno para cada Textura que deseas pintar. Así es como se hace:
 
-First, make sure that you are in Landscape Paint mode.
+Primero, asegúrate de estar en el modo Landscape Paint.
 
-undefined
-Click image for full size.
+indefinido
+Haz clic en la imagen para verla a tamaño completo.
 
-In the Landscape panel, under the Target Layers section, you should see three inputs labeled Soil, Grass, and Snow.
+En el panel Landscape, en la sección Target Layers, deberías ver tres entradas etiquetadas Soil, Grass y Snow.
 
-undefined
-Click image for full size.
+indefinido
+Haz clic en la imagen para verla a tamaño completo.
 
-To the right of the names, there is a Plus Sign icon. Clicking that will bring up another menu that will ask what type of layer you would like to add. For this example, pick the Weight-Blended Layer (normal) option.
+A la derecha de los nombres, hay un ícono de Signo Más. Al hacer clic en él se abrirá otro menú que preguntará qué tipo de capa te gustaría agregar. Para este ejemplo, elige la opción Weight-Blended Layer (normal).
 
-Landscape blend layer
-Click image for full size.
+Capa de mezcla de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-When you select the Weight-Blended Layer (normal) option, you will be prompted with a pop-up box that is asking you where you want to save the newly created Landscape Layer Info Objects. Select the Resources folder that is under the Landscape folder and then press the OK button.
+Cuando seleccionas la opción Weight-Blended Layer (normal), se te pedirá con una ventana emergente que te pregunta dónde quieres guardar los Landscape Layer Info Objects recién creados. Selecciona la carpeta Resources que está dentro de la carpeta Landscape y luego presiona el botón OK.
 
-Landscape layer info save
-Click image for full size.
+Guardar información de capa de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Once you have completed the first one, repeat the same process for the other two. You should have something that looks like the following:
+Una vez que hayas completado el primero, repite el mismo proceso para los otros dos. Deberías tener algo que se vea como lo siguiente:
 
-Landscape finshed layers
-Click image for full size.
+Capas terminadas de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Now with the Landscape Layer Info Objects created and applied, we can begin to paint our Landscape.
+Ahora, con los Landscape Layer Info Objects creados y aplicados, podemos comenzar a pintar nuestro Landscape.
 
-Painting the Landscape
-Before you begin to paint the Landscape, here is a re-cap of some of the most used commonly used keyboard and mouse inputs that you will use when painting the Landscape.
+Pintando el Landscape
+Antes de que comiences a pintar el Landscape, aquí hay un resumen de algunas de las entradas de teclado y ratón más utilizadas que usarás al pintar el Landscape.
 
-Common Controls	Operation
-Left Mouse Button	Performs a stroke that applies the selected tool's effects to the selected layer.
-Ctrl+Z	Undo last stroke.
-Ctrl+Y	Redo last undone stroke.
-The main tool that you will use for applying textures to your Landscape is going to be the Paint Tool. To find out more about all of the tools that you can use to paint on the Landscape, check out the Paint Mode documentation.
+Controles comunes	Operación
+Botón izquierdo del ratón	Realiza un trazo que aplica los efectos de la herramienta seleccionada a la capa seleccionada.
+Ctrl+Z	Deshacer último trazo.
+Ctrl+Y	Rehacer último trazo deshecho.
+La herramienta principal que usarás para aplicar texturas a tu Landscape será la Paint Tool. Para obtener más información sobre todas las herramientas que puedes usar para pintar en el Landscape, consulta la documentación de Paint Mode.
 
-To apply a Material to the Landscape, press and hold the Left Mouse Button to apply whatever you have selected to the area under the brush.
+Para aplicar un Material al Landscape, mantén presionado el Botón izquierdo del ratón para aplicar lo que sea que hayas seleccionado al área debajo del pincel.
 
-To select a new texture to paint, make sure you are in Landscape Painting Mode then under the Target Layers section, select which texture you want to paint with by clicking on it in the list. Whichever texture is highlighted will be painted on the Landscape. In the image below, you can see the Soil layer is highlighted meaning that this is the texture that will be painted to the Landscape.
+Para seleccionar una nueva textura para pintar, asegúrate de estar en Landscape Painting Mode, luego, en la sección Target Layers, selecciona qué textura deseas pintar haciendo clic en ella en la lista. Cualquier textura que esté resaltada se pintará en el Landscape. En la imagen a continuación, puedes ver que la capa Soil está resaltada, lo que significa que esta es la textura que se pintará en el Landscape.
 
-Landscape picking layers to paint
-Click image for full size.
+Seleccionando capas de landscape para pintar
+Haz clic en la imagen para verla a tamaño completo.
 
-When you finish painting, you should have something that looks like this.
+Cuando termines de pintar, deberías tener algo que se vea así.
 
-Landscape final paint
-Click image for full size.
+Pintura final de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Possible Issues and Workarounds
-When you first start painting on your Landscape you might run into an issue where the base Material disappears or turns black, like in the following picture:
+Posibles problemas y soluciones
+Cuando comiences a pintar en tu Landscape, es posible que te encuentres con un problema en el que el Material base desaparece o se vuelve negro, como en la siguiente imagen:
 
-First paint issues
-Click image for full size.
+Primeros problemas de pintura
+Haz clic en la imagen para verla a tamaño completo.
 
-This happens when there is no Paint Layer data on the Landscape when you first start to paint. To fix this issue, continue to paint over the Landscape generating the Paint Layer data as you go. If you would like to fill in the entire Landscape, first select a large brush size, like 8192.0, pick a layer that you want to use as a base and paint over the entire Landscape once. This will create Paint Layer data and allow you to continue to paint without anything turning black.
+Esto sucede cuando no hay datos de Paint Layer en el Landscape cuando comienzas a pintar por primera vez. Para solucionar este problema, continúa pintando sobre el Landscape generando los datos de Paint Layer a medida que avanzas. Si deseas llenar todo el Landscape, primero selecciona un tamaño de pincel grande, como 8192.0, elige una capa que desees usar como base y pinta sobre todo el Landscape una vez. Esto creará datos de Paint Layer y te permitirá continuar pintando sin que nada se vuelva negro.
 
-Another issue that you might run into is that the scale of the Textures on your Landscape are either too big or too small. To fix this, open your Landscape Material and select the Landscape Coords node. With that node selected, adjust the Mapping Scale in the Details panel and save the Material. Once the Material is re-compiled, check the scale out in the viewport. If the scale is not to your liking, then repeat the processes above until you get the results you want.
+Otro problema con el que te puedes encontrar es que la escala de las Texturas en tu Landscape sea demasiado grande o demasiado pequeña. Para solucionar esto, abre tu Material de Landscape y selecciona el nodo Landscape Coords. Con ese nodo seleccionado, ajusta la Mapping Scale en el panel Details y guarda el Material. Una vez que se recompile el Material, verifica la escala en la ventana gráfica. Si la escala no es de tu agrado, repite los procesos anteriores hasta obtener los resultados deseados.
 
-Landscape texture size
-Click image for full size.
+Tamaño de textura de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Here is a comparison between a Mapping Scale of 0.5 on the Left and 5.0 on the Right.
+Aquí hay una comparación entre una Mapping Scale de 0.5 a la izquierda y 5.0 a la derecha.
 
 Mapping Scale: 0.5
 Mapping Scale: 5.0
 
 Mapping Scale: 0.5Mapping Scale: 5.0
-6 - Landscape Tips and Tricks
-While the quick start tutorial above will get you up and running with a Landscape, it barely scratches the surface of what the Landscape tools can do. This section aims to show you some tips and tricks for using the Landscape Tool as well as some external tools that you can use to generate your Landscape.
+6 - Consejos y trucos de Landscape
+Si bien el tutorial de inicio rápido anterior te permitirá comenzar a trabajar con un Landscape, apenas roza la superficie de lo que pueden hacer las herramientas de Landscape. Esta sección tiene como objetivo mostrarte algunos consejos y trucos para usar la herramienta Landscape, así como algunas herramientas externas que puedes usar para generar tu Landscape.
 
-Tips & Tricks
-When using the Paint Tools, you might find it easier to paint over what you would like to erase than to try and erase it using Shift + Left Mouse Button.
-When using the Alpha Brush, remember that you can change what the pattern that the brush uses by selecting a different RGB channels from the Texture Channel drop down menu. This is very handy because you can pack up to three different Alpha patterns in a single texture.
+Consejos y trucos
+Cuando uses las herramientas de Paint, es posible que te resulte más fácil pintar sobre lo que deseas borrar que intentar borrarlo usando Shift + Botón izquierdo del ratón.
+Cuando uses el Alpha Brush, recuerda que puedes cambiar el patrón que usa el pincel seleccionando un canal RGB diferente del menú desplegable Texture Channel. Esto es muy útil porque puedes empaquetar hasta tres patrones Alpha diferentes en una sola textura.
 
-Landscape tips tricks
-Click image for full size.
+Consejos y trucos de landscape
+Haz clic en la imagen para verla a tamaño completo.
 
-Landscape compiles shaders separately for each component based on which layers are painted on them. For example, if you have a component with a dirt layer on it but no trace of the grass layer has been painted on it, the textures for the grass layer are left out of the material for that component, making it cheaper to render. So when you do an optimization pass, it can be worthwhile to go over a Landscape and look for components that only have a tiny trace of a given layer and erase them to reduce material complexity.
-Another issue to watch out for when painting layers is to avoid having too many textures on one component. The material editor stats show the limit of how many texture samples you are allowed to use, but for Landscape materials the masks for each layer count as texture samples too and do not show in the stats. If a component starts showing the default texture (Grey Squares) when you paint a new layer onto it, it is likely that it is gone over the texture sample limit and either needs to have a layer erased or the material needs to be optimized to use less textures.
-You can change the LOD Distance Factor for individual Landscape components so they will simplify at closer or further distance thresholds. Things like mountain peaks or anything with a distinct silhouette will LOD most noticeably as you move further away, so you can reduce the LOD bias for those components to preserve their shape. You can also raise the LOD bias for low-detail areas like flat plains that will not look noticeably different with less tessellation.
-World Composition
-Unreal Engine 5 (UE5) now offers the ability to create massive worlds made using Landscape that can easily be managed by using the World Composition tool. World Composition was designed to help simplify the management of large worlds, especially if those worlds are made using the Landscape system. To find out more about the World Composition tool, please refer to the official document that you can find here:
+Landscape compila shaders por separado para cada componente según las capas que estén pintadas en ellos. Por ejemplo, si tienes un componente con una capa de tierra pero no hay rastro de la capa de hierba pintada en él, las texturas para la capa de hierba se excluyen del material para ese componente, lo que lo hace más barato de renderizar. Por lo tanto, cuando realices una pasada de optimización, puede valer la pena revisar un Landscape y buscar componentes que solo tengan un pequeño rastro de una capa determinada y borrarlos para reducir la complejidad del material.
+Otro problema a tener en cuenta al pintar capas es evitar tener demasiadas texturas en un solo componente. Las estadísticas del editor de materiales muestran el límite de muestras de textura que puedes usar, pero para los materiales de Landscape, las máscaras para cada capa también cuentan como muestras de textura y no se muestran en las estadísticas. Si un componente comienza a mostrar la textura predeterminada (Cuadros Grises) cuando pintas una nueva capa sobre él, es probable que haya superado el límite de muestras de textura y sea necesario borrar una capa o el material debe optimizarse para usar menos texturas.
+Puedes cambiar el Factor de Distancia LOD para componentes individuales de Landscape para que se simplifiquen en umbrales de distancia más cercanos o más lejanos. Cosas como picos de montañas o cualquier cosa con una silueta distintiva tendrán un LOD más notable a medida que te alejas, por lo que puedes reducir el sesgo de LOD para esos componentes para preservar su forma. También puedes aumentar el sesgo de LOD para áreas de bajo detalle, como llanuras planas, que no se verán notablemente diferentes con menos teselado.
+Composición Mundial
+Unreal Engine 5 (UE5) ahora ofrece la capacidad de crear mundos masivos hechos con Landscape que se pueden administrar fácilmente mediante el uso de la herramienta World Composition. World Composition fue diseñado para ayudar a simplificar la gestión de mundos grandes, especialmente si esos mundos están hechos con el sistema Landscape. Para obtener más información sobre la herramienta World Composition, consulta el documento oficial que puedes encontrar aquí:
 
-World Composition Documents
+Documentos de World Composition
 
-External Creation Tools
-While the default Landscape tools do have the ability to meet all of your sculpting and painting needs, there could be some situations where you might want some extra control over your Landscape's look and feel. The following is a list of software packages that could help you obtain the results you are looking for if you cannot get them from using the Landscape tools.
+Herramientas de creación externas
+Si bien las herramientas de Landscape predeterminadas tienen la capacidad de satisfacer todas tus necesidades de escultura y pintura, puede haber algunas situaciones en las que desees un control adicional sobre la apariencia de tu Landscape. La siguiente es una lista de paquetes de software que podrían ayudarte a obtener los resultados que buscas si no puedes obtenerlos usando las herramientas de Landscape.
 
  	 
-Houdini	Procedural terrain generation in Houdini uses a collection of heightfield nodes to let you use layer shapes and add noise to define the look of your digital landscapes. Use advanced erosion tools for more control over details such as fluvial lines, river banks, debris, and new hierarchical scattering for more efficient placement of elements into landscapes. You can then export height and/or mask layers to create terrain in UE5, or you can wrap up your terrain networks into Houdini Digital Assets that will open up in UE5 using the Houdini Engine plug-in. When Digital Assets include heightfield nodes, they will integrate seamlessly with Unreal Engine's native Terrain tools.
-Mudbox	While primarily a tool for digital sculpting and painting 3D meshes, Mudbox can also be used to generate heightmap data for your Landscape. You can read more about how Mudbox might be able to help you out with your Landscape by checking out their website.
-Terragen	Terragen is another powerful fully procedural terrain creation software. Much like World Machine, it can be used to build, texture, and export both heightmaps and textures for your Landscape. You can read more about how Terragen might be able to help you out with your Landscape by checking out their website.
-World Machine	World Machine is a powerful procedural terrain creation software. It can be used to build, texture, and export both heightmaps and textures for your Landscape. You can read more about how World Machine might be able to help you out with your Landscape by checking out their website.
-ZBrush	Zbrush is another digital sculpting and painting tool that can be used to generate heightmap data for your Landscape. You can read more about how Zbrush might be able to help you out with your Landscape by checking out their website.
+Houdini	La generación de terreno procesal en Houdini utiliza una colección de nodos de campo de altura para permitirte usar formas de capas y agregar ruido para definir el aspecto de tus paisajes digitales. Utiliza herramientas de erosión avanzadas para un mayor control sobre detalles como líneas fluviales, orillas de ríos, escombros y nuevo scattering jerárquico para una colocación más eficiente de elementos en los paisajes. Luego puedes exportar capas de altura y/o máscara para crear terrenos en UE5, o puedes envolver tus redes de terreno en Houdini Digital Assets que se abrirán en UE5 usando el complemento Houdini Engine. Cuando los Digital Assets incluyen nodos de campo de altura, se integrarán perfectamente con las herramientas de Terreno nativas de Unreal Engine.
+Mudbox	Si bien es principalmente una herramienta para esculpir y pintar mallas 3D digitales, Mudbox también se puede usar para generar datos de mapas de altura para tu Landscape. Puedes leer más sobre cómo Mudbox podría ayudarte con tu Landscape visitando su sitio web.
+Terragen	Terragen es otra potente herramienta de creación de terrenos totalmente procesales. Al igual que World Machine, se puede usar para construir, texturizar y exportar mapas de altura y texturas para tu Landscape. Puedes leer más sobre cómo Terragen podría ayudarte con tu Landscape visitando su sitio web.
+World Machine	World Machine es una potente herramienta de creación de terrenos procesales. Se puede usar para construir, texturizar y exportar mapas de altura y texturas para tu Landscape. Puedes leer más sobre cómo World Machine podría ayudarte con tu Landscape visitando su sitio web.
+ZBrush	Zbrush es otra herramienta de escultura y pintura digital que se puede usar para generar datos de mapas de altura para tu Landscape. Puedes leer más sobre cómo Zbrush podría ayudarte con tu Landscape visitando su sitio web.
 landscape
-building virtual worlds
-open world
+construyendo mundos virtuales
+mundo abierto
 
   </p>
 </body>
