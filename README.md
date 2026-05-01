@@ -1,4 +1,4 @@
-Preoyecto calaborativo de los alumnos de ingeniería en animación e interactividad
+Proyecto calaborativo de los alumnos de ingeniería en animación e interactividad
 
 * Adrian 
 * Brenda 
